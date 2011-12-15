@@ -1,0 +1,8 @@
+.DS_Store
+tmp
+build/iphone/*
+build/android/*
+build.log
+.project
+.settings/*
+.fastdev.lock
