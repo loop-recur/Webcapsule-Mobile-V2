@@ -7,18 +7,27 @@ Layouts.login = function(delegate) {
 	}
 	
 	var win = Ti.UI.createWindow({
-		backgroundColor:'#ffffffff'
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
-	var username = Ti.UI.createTextField({  
+	var logo = Ti.UI.createView({
+		backgroundImage:"images/login/webcap_logo_large.png",
+		width:171,
+		height:28,
+		top:80
+	});
+	
+	var username = Ti.UI.createTextField({
+		backgroundImage:"images/login/webcap_login_input_box.png",
+		backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",  
 		paddingLeft:5,
 		borderRadius:4,
-    width:250,  
-    height:35, 
+    width:220,  
+    height:56, 
     hintText:'Email',  
     keyboardType:Ti.UI.KEYBOARD_EMAIL,  
     returnKeyType:Ti.UI.RETURNKEY_NEXT,
-		top:100
+		top:135
 	});
 
 	username.addEventListener('return', function() {
@@ -26,9 +35,11 @@ Layouts.login = function(delegate) {
 	});
 
 	var password = Ti.UI.createTextField({
-    top:142,  
-    width:250,
-    height:35,
+		backgroundImage:"images/login/webcap_login_input_box.png",
+		backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",
+    top:192,  
+    width:220,
+    height:56,
 		paddingLeft:5,  
     hintText:'Password',
     passwordMask:true,
@@ -41,7 +52,7 @@ Layouts.login = function(delegate) {
 
 	var login_button = Ti.UI.createButton({  
     value:false,
-		top:195,
+		top:50,
   	right:10,
     width:49,  
     height:133
@@ -50,26 +61,31 @@ Layouts.login = function(delegate) {
 	login_button.addEventListener('click', doLogin);
 
 	var login_twitter = Ti.UI.createButton({
-		title: "twitter",
-		top:277,
+		backgroundImage:"images/login/webcap_login_with_twitter_btn.png",
+		backgroundSelectedImage:"images/login/webcap_login_with_twitter_btn_active.png",
+		top:267,
 		height:55,
 		width:290
 	});
 	
 	var login_facebook = Ti.UI.createButton({
-		title: "facebook",
-		top:340,
+		backgroundImage:"images/login/webcap_login_with_facebook_btn.png",
+		backgroundSelectedImage:"images/login/webcap_login_with_facebook_btn_active.png",
+		top:330,
 		height:55,
 		width:290
 	});
 	
 
 	var create_account = Ti.UI.createButton({
-		top:403,
+		backgroundImage:"images/login/webcap_create_new_user_btn.png",
+		backgroundSelectedImage:"images/login/webcap_create_new_user_btn_active.png",
+		top:393,
 		height:55,
 		width:290
 	});
 	
+	win.add(logo);
 	win.add(username);
 	win.add(password);
 	win.add(login_button);
