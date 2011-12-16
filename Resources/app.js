@@ -8,6 +8,6 @@ Ti.include('support/tweeter/twitter_api.js');
 
 App.run();
 
-App.setHost("http://webcapsule.local/api");
+App.setHost("http://localhost:3000/api");
 
 Authenticator.isAuthenticated() ? Controllers.application.index() : Controllers.authentications.index();
