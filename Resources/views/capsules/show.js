@@ -1,12 +1,12 @@
 Views.capsules.show = function(delegate, id) {
 	var view = Ti.UI.createWindow({
 		title: "Capsule",
-		backgroundColor: "white"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
 	var table = Ti.UI.createTableView({
-		backgroundColor:"white",
-		top:82,
+		backgroundColor:"transparent",
+		top:250,
 		bottom:0
 	});
 	
@@ -16,7 +16,6 @@ Views.capsules.show = function(delegate, id) {
 			font:{fontFamily:'GillSans',fontSize:18,fontWeight:'regular'},
 			color:"#444444",
 			left:10,
-			top:20,
 			height:"auto",
 			width:"auto",
 			kind: content.kind,
@@ -25,7 +24,7 @@ Views.capsules.show = function(delegate, id) {
 		});
 
 		var row = Ti.UI.createTableViewRow({
-			height:80,
+			height:30,
 			id: content.id,
 			kind: content.kind,
 			className:content.kind,

@@ -1,17 +1,27 @@
 Views.capsules.index = function(delegate) {
 	var view = Ti.UI.createView({
-		backgroundColor: "white"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
-	var picker_row = Ti.UI.createTableViewRow({
-		height:80,
-		title: "picker"
+	var picker_row = Ti.UI.createView({
+		backgroundColor:"orange",
+		height:30,
+		top:0
 	});
+	
+	view.add(picker_row)
+	
+	var picker_label = Ti.UI.createLabel({
+		text:"Filter will be static here"
+	});
+	
+	picker_row.add(picker_label);
 	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
-		top:82,
-		bottom:0
+		top:30,
+		bottom:0,
+		separatorColor:'transparent'
 	});
 	
 	var refreshTable = function(data) {
@@ -56,7 +66,7 @@ Views.capsules.index = function(delegate) {
 	});
 	
 	var picker = Ti.UI.createPicker({
-		top:43,
+		top:0,
 		selectionIndicator:true
 	});
 	
@@ -69,16 +79,17 @@ Views.capsules.index = function(delegate) {
 		var page_text_color = "#B1B2B4";
 		
 		var row = Ti.UI.createTableViewRow({
-			backgroundImage:"images/backgrounds/webcap_feed_bg.png",
+			backgroundImage:"images/backgrounds/webcap_feed_bg_with_photoindent.png",
 			height:279,
+			width:320,
 			id: capsule.id,
 			className:'capsule'
 		});
 	
 		var avatar = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(capsule.user.image), 
-			left:12,
-			top:12,
+			left:20,
+			top:6,
 			height:59,
 			width:59
 		});
@@ -86,13 +97,13 @@ Views.capsules.index = function(delegate) {
 		row.add(avatar);
 		
 		var user = Ti.UI.createLabel({
-			text: "by " +capsule.user.full_name, 
-			font:{fontFamily:'GillSans-Light',fontSize:"13dp",fontWeight:'regular'},
+			text: capsule.user.full_name, 
+			font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:78,
+			left:88,
 			top:9,
-			height:19,
-			width:220
+			height:20,
+			width:200
 		});
 		
 		row.add(user);
@@ -101,8 +112,8 @@ Views.capsules.index = function(delegate) {
 			text: "added new ITEM TYPE GOES HERE", 
 			font:{fontFamily:'GillSans-Light',fontSize:"13dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:78,
-			top:9,
+			left:88,
+			top:22,
 			height:19,
 			width:220
 		});
@@ -113,8 +124,8 @@ Views.capsules.index = function(delegate) {
 			backgroundImage:"images/feed/webcap_feedicons_photo.png",
 			width:31,
 			height:23,
-			left:78,
-			top:48
+			left:88,
+			top:38
 		});
 		
 		row.add(added_icon);
@@ -123,8 +134,8 @@ Views.capsules.index = function(delegate) {
 			text:"to " + capsule.name, 
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:12,
-			top:71,
+			left:22,
+			top:61,
 			height:17,
 			width:200
 		});
@@ -135,10 +146,10 @@ Views.capsules.index = function(delegate) {
 			text:"a webcapsule created by " + capsule.user.full_name, 
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:12,
-			top:87,
+			left:22,
+			top:75,
 			height:17,
-			width:200
+			width:240
 		});
 	
 		row.add(capsule_creator);
@@ -147,8 +158,8 @@ Views.capsules.index = function(delegate) {
 			text: "on " + Date.parse(capsule.created_at).toString("M/d/yy"),
 			font:{fontFamily:'GillSans-Light',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:12,
-			top:105,
+			left:22,
+			top:93,
 			height:17,
 			width:200
 		});
@@ -159,8 +170,8 @@ Views.capsules.index = function(delegate) {
 			backgroundImage:"images/capsule/webcap_stats_video_icon.png",
 			height:14,
 			width:18,
-			left:12,
-			bottom:15
+			left:22,
+			bottom:35
 		});
 		
 		row.add(video_icon);
@@ -170,7 +181,7 @@ Views.capsules.index = function(delegate) {
 			height:14,
 			width:18,
 			left:65,
-			bottom:15
+			bottom:35
 		});
 		
 		row.add(photos_icon);
@@ -179,8 +190,8 @@ Views.capsules.index = function(delegate) {
 			backgroundImage:"images/capsule/webcap_stats_comments_icon.png",
 			height:14,
 			width:18,
-			left:122,
-			bottom:15
+			left:118,
+			bottom:35
 		});
 		
 		row.add(comments_icon);
@@ -189,18 +200,18 @@ Views.capsules.index = function(delegate) {
 			backgroundImage:"images/capsule/webcap_stats_views_icon.png",
 			height:14,
 			width:18,
-			left:175,
-			bottom:15
+			left:168,
+			bottom:35
 		});
 		
 		row.add(views_icon);
 		
 		var video_count = Ti.UI.createLabel({
 			text:"10",
-			font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:33,
-			bottom:10,
+			left:41,
+			bottom:31,
 			width:30,
 			height:21
 		});
@@ -209,10 +220,10 @@ Views.capsules.index = function(delegate) {
 		
 		var photo_count = Ti.UI.createLabel({
 			text:"1000",
-			font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:86,
-			bottom:10,
+			left:84,
+			bottom:31,
 			width:30,
 			height:21
 		});
@@ -221,10 +232,10 @@ Views.capsules.index = function(delegate) {
 		
 		var comment_count = Ti.UI.createLabel({
 			text:"100",
-			font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:143,
-			bottom:10,
+			left:137,
+			bottom:31,
 			width:30,
 			height:21
 		});
@@ -233,22 +244,22 @@ Views.capsules.index = function(delegate) {
 		
 		var views_count = Ti.UI.createLabel({
 			text:"1000",
-			font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
-			left:196,
-			bottom:10,
+			left:187,
+			bottom:31,
 			width:30,
 			height:21
 		});
 		
 		row.add(views_count);
 		
-		var go_to_capsule = Ti.UI.createbutton({
-			backgroundImage:"images/capsule/webcap_feed_go_to_capsule_btn.png",
+		var go_to_capsule = Ti.UI.createButton({
+			backgroundImage:"images/feed/webcap_feed_go_to_capsule_btn.png",
 			height:30,
 			width:93,
 			right:10,
-			bottom:15
+			bottom:25
 		})
 	
 		row.add(go_to_capsule);
@@ -258,7 +269,6 @@ Views.capsules.index = function(delegate) {
 	}
 		
 	tableView.addEventListener('click', delegate.tableClicked);
-	tableView.appendRow(picker_row);
 	view.add(tableView);
 	
 	return view;
