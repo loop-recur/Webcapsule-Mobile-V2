@@ -3,20 +3,6 @@ Views.capsules.index = function(delegate) {
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
-	var picker_row = Ti.UI.createView({
-		backgroundColor:"orange",
-		height:30,
-		top:0
-	});
-	
-	view.add(picker_row)
-	
-	var picker_label = Ti.UI.createLabel({
-		text:"Filter will be static here"
-	});
-	
-	picker_row.add(picker_label);
-	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
 		top:30,
@@ -26,56 +12,17 @@ Views.capsules.index = function(delegate) {
 	
 	var refreshTable = function(data) {
 		tableView.setData(map(createTableViewRow, data));
-		// tableView.appendRow(picker_row);
 	}
-	
-	delegate.getAll(refreshTable);
-	
-	var slide_in =  Ti.UI.createAnimation({bottom:0});
-	var slide_out =  Ti.UI.createAnimation({bottom:-251});
-	
-	var picker_view = Ti.UI.createView({
-		height:251,
-		bottom:-251,
-		zIndex:99
-	});
-	
-	var done =  Ti.UI.createButton({
-		title:'Done',
-		style:Ti.UI.iPhone.SystemButtonStyle.DONE
-	});
-	
-	var spacer =  Ti.UI.createButton({
-		systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-	});
+		
+	var subtabs = UI.SubTabs(view, delegate.feed_options, {skip_back : true, center: true});
 
-	var toolbar =  Ti.UI.createToolbar({
-		top:0,
-		items:[spacer,done]
-	});
-	
-	picker_view.add(toolbar);
-	
-	done.addEventListener('click', function(e) {
-		delegate.pickerDone(refreshTable, picker.getSelectedRow(0).title);
-		picker_view.animate(slide_out);
-	});
-	
-	picker_row.addEventListener('click', function() {
-		picker_view.animate(slide_in)
-	});
-	
-	var picker = Ti.UI.createPicker({
-		top:0,
-		selectionIndicator:true
-	});
-	
-	map(function(t){ picker.add(Ti.UI.createPickerRow({title : t})); }, delegate.pickerOptions);
-	picker_view.add(picker);
-	view.add(picker_view);
-	
+	subtabs.delegate = {
+		getContent : function(view, e) {			
+			delegate.pickerDone(function(d){ refreshTable(d);}, e.source.id)
+		}
+	}
+		
 	var createTableViewRow = function(capsule) {
-
 		var page_text_color = "#B1B2B4";
 		
 		var row = Ti.UI.createTableViewRow({
@@ -259,16 +206,16 @@ Views.capsules.index = function(delegate) {
 			height:30,
 			width:93,
 			right:10,
-			bottom:25
-		})
+			bottom:25,
+			id: capsule.id
+		});
+		
+		go_to_capsule.addEventListener('click', delegate.tableClicked);
 	
 		row.add(go_to_capsule);
-		
-	
 		return row;
 	}
-		
-	tableView.addEventListener('click', delegate.tableClicked);
+	
 	view.add(tableView);
 	
 	return view;

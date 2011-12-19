@@ -1,6 +1,4 @@
 Views.videos.show = function(video) {	
-	log(video);
-	
 	var win = Ti.UI.createWindow({
 		title: "Videos",
 		backgroundColor: "white"

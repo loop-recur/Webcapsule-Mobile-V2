@@ -10,13 +10,16 @@ Controllers.capsules = (function() {
 	var show = function(id) {
 		Nav.open(Views.capsules.show(self, id));
 	};
-	
+
+	var update = function(capsule) {
+		Nav.open(Views.capsules.update(self, capsule));
+	};
 	
 // 	delegate methods
-
 	self.getAll = Api.all;
 	self.getSingle = Api.find;
-	self.pickerOptions = ["Mine", "Friends", "Everyone", "Tagged"];
+	self.feed_options = ["Friends", "Mine", "Everybody", "Tagged"];
+	self.content_types = ["videos", "photos", "comments"];
 	
 	self.tableClicked = function(e) {
 		if(e.source.id) show(e.source.id);
@@ -27,8 +30,24 @@ Controllers.capsules = (function() {
 	}
 	
 	self.pickerDone = function(cb, value) {
-		Api.all(cb, {feed_type : value});
+		Api.all(cb, {feed_type : value.toLowerCase()});
 	}
 	
-	return {index : index, show : show}
+	self.addContent = defn(function(capsule, e) {
+		if(e.source.kind) Nav.open(Views[e.source.kind].create(self, capsule));
+	});
+	
+	self.addComment = function(cb, capsule, value) {
+		RestApi("comments").save(cb, {content: value, capsule_id: capsule.id});
+	};
+	
+	self.addPhoto = function(cb, photo, progress_bar) {
+		RestApi("photos").save(cb, photo, {progress_bar: progress_bar});
+	};
+	
+	self.addVideo = function(cb, video, progress_bar) {
+		RestApi("videos").save(cb, video, {progress_bar: progress_bar});
+	};
+	
+	return {index : index, show : show, update: update}
 })();

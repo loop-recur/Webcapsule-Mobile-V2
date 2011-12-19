@@ -2,7 +2,6 @@ RestApi = function(name) {
 	pub_obj = {};
 	
 	function all(callbacks, params, options) {
-		
 		var oldSuccess = callbacks.success || callbacks;
 		var oldError = callbacks.error || function(){};
 						
@@ -18,7 +17,8 @@ RestApi = function(name) {
 		callApi("get", getPath(), callbacks, params, options);
 	};
 	
-	function find(id, callbacks, params, options) {
+	function find(callbacks, params, options) {
+		var id = params.id;
 		var oldSuccess = callbacks.success || callbacks;
 				
 		callbacks.error = function(r) {
@@ -33,29 +33,22 @@ RestApi = function(name) {
 		callApi("get", getPath(id), callbacks, {}, params, options);
 	};
 	
-	function save(obj, callbacks, options) {
+	function save(callbacks, obj, options) {
 		var id = obj.id;
 		var oldSuccess = callbacks.success || callbacks;
 		var oldError = callbacks.error || function(){};
-				
+		options = options || {};
+
 		callbacks.error = function(r) {
 			if(r) {
 				oldError(r.responseText);
 			} else {
-				if(Cache[name]) {
-					var old_record = select("id == x.id".lambda().p(id), Cache[name])[0];
-					old_record ? Helpers.array_funs.replace(Cache[name], old_record, obj) : Cache[name].unshift(obj);
-				}
 				oldSuccess(old_record);
 			}
 		};
 		
 		callbacks.success = function(r) {
 			var json = JSON.parse(r.responseText);
-			if(Cache[name]) {
-				var old_record = select("id == x.id".lambda().p(id), Cache[name])[0];
-				old_record ? Helpers.array_funs.replace(Cache[name], old_record, json) : Cache[name].unshift(json);
-			}
 			oldSuccess(json);
 		};
 		
@@ -63,29 +56,17 @@ RestApi = function(name) {
 		callApi("post", path, callbacks, obj, options);
 	};
 	
-	function destroy(obj, callbacks, options) {
+	function destroy(callbacks, obj, options) {
 		var id = obj.id;
 		var oldSuccess = callbacks.success || callbacks;
 		var oldError = callbacks.error || function(){};
 				
 		callbacks.error = function(r) {
-			if(r) {
-				oldError(r.responseText);
-			} else {
-				if(Cache[name]) {
-					var old_record = select("id == x.id".lambda().p(id), Cache[name])[0];
-					if(old_record){ Helpers.array_funs.remove(Cache[name], old_record); };
-				}
-				oldSuccess(old_record);
-			}
+			oldError(r.responseText);
 		};
 		
 		callbacks.success = function(r) {
 			var json = JSON.parse(r.responseText);
-			if(Cache[name]) {
-				var old_record = select("id == x.id".lambda().p(id), Cache[name])[0];
-				if(old_record){ Helpers.array_funs.remove(Cache[name], old_record); };
-			}
 			oldSuccess(json);
 		};
 		
