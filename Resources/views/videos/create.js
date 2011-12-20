@@ -18,11 +18,11 @@ Views.videos.create = function(delegate, capsule) {
 		Controllers.capsules.show(capsule.id);
 	}
 	
-	var save = function(orientation, e) {
-		var video = {upload : e.media, capsule_id: capsule.id, orientation: orientation};
+	var save = function(e) {
+		var video = {upload : e.media, capsule_id: capsule.id};
 		win.add(progress_bar);
 		progress_bar.show();
-		delegate.addPhoto(finish, video, progress_bar);
+		delegate.addVideo(finish, video, progress_bar);
 	}
 
 	var edit = function(e) {
@@ -30,7 +30,7 @@ Views.videos.create = function(delegate, capsule) {
 		Ti.Media.startVideoEditing({
 			media: e.media,
 			videoQuality: Ti.Media.QUALITY_MED,
-			success:save.p(e.orientation)
+			success:save
 		});
 	}
 
