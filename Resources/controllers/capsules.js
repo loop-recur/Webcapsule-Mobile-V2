@@ -3,8 +3,11 @@ Controllers.capsules = (function() {
 	var self = {};
 	
 	var index = function(win) {
-		self.win = win;
-		win.add(Views.capsules.index(self));
+		Views.capsules.index(self, win);
+	};
+	
+	var create = function() {
+		Nav.open(Views.capsules.create(self));
 	};
 	
 	var show = function(id) {
@@ -49,5 +52,9 @@ Controllers.capsules = (function() {
 		RestApi("videos").save(cb, video, {progress_bar: progress_bar});
 	};
 	
-	return {index : index, show : show, update: update}
+	self.createCapsule = function(cb, capsule) {
+		Api.save(cb, capsule);
+	};
+	
+	return {index : index, show : show, update: update, create: create}
 })();

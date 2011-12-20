@@ -12,6 +12,7 @@ FileList = [
 	, "controllers/authentications.js"
 	, "views/capsules/index.js"
 	, "views/capsules/show.js"
+	, "views/capsules/create.js"
 	, "views/capsules/mosaic.js"
 	, "views/capsules/top_bar.js"
 	, "views/capsules/update.js"

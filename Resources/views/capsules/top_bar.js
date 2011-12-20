@@ -204,11 +204,13 @@ Views.capsules.top_bar = function(capsule) {
 			compress.top = 50;
 			compress.backgroundImage = "images/capsule/webcap_show_hide_down.png",
 			info_view.animate(slide_up);
+			mapview.visible = false;
 			Ti.App.fireEvent('collapse', {});
 		} else {
 			compress.top = 177;
 			compress.backgroundImage = "images/capsule/webcap_show_hide_up.png",
 			info_view.animate(slide_down);
+			mapview.visible = true;
 			Ti.App.fireEvent('expand', {});
 		}
 	});

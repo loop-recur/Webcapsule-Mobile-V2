@@ -12,12 +12,12 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 	
 	var makeComment = function(comment) {
 		var comment_view = Ti.UI.createView({
-			backgroundColor:"#efefef",
+			backgroundColor:"yellow",
 		});
 	
 		var body = Ti.UI.createLabel({
 			text:comment.content, 
-			font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans',fontSize:"11dp",fontWeight:'regular'},
 			color:"#444444",
 			left:10,
 			top:10,
@@ -35,7 +35,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 	
 		var user = Ti.UI.createLabel({
 			text: "By " +comment.user.full_name, 
-			font:{fontFamily:'GillSans-Light',fontSize:"18dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans-Light',fontSize:"11dp",fontWeight:'regular'},
 			color:"#333333",
 			left:20,
 			top:45,

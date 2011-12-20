@@ -1,14 +1,14 @@
 Views.capsules.show = function(delegate, id) {
-	var view = Ti.UI.createWindow({
+	var win = Ti.UI.createWindow({
 		title: "Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 			
 	var finish = function(capsule) {
 		var mosaic = Views.capsules.mosaic(capsule, delegate.showRowClicked);
-		view.add(mosaic);
+		win.add(mosaic);
 		var top_bar = Views.capsules.top_bar(capsule);
-		view.add(top_bar);
+		win.add(top_bar);
 		
 		var add_to_capsule = Ti.UI.createButton({
 			title: "Add",
@@ -21,10 +21,10 @@ Views.capsules.show = function(delegate, id) {
 			Controllers.capsules.update(capsule);
 		});
 
-		view.add(add_to_capsule);
+		win.setRightNavButton(add_to_capsule);
 	}
 	
 	delegate.getSingle(finish, {id: id});
 
-	return view;
+	return win;
 }

@@ -1,11 +1,7 @@
-Views.capsules.index = function(delegate) {
-	var view = Ti.UI.createView({
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
-	});
-	
+Views.capsules.index = function(delegate, win) {	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
-		top:30,
+		top:45,
 		bottom:0,
 		separatorColor:'transparent'
 	});
@@ -14,7 +10,7 @@ Views.capsules.index = function(delegate) {
 		tableView.setData(map(createTableViewRow, data));
 	}
 		
-	var subtabs = UI.SubTabs(view, delegate.feed_options, {skip_back : true, center: true});
+	var subtabs = UI.SubTabs(win, delegate.feed_options, {skip_back : true, center: true});
 
 	subtabs.delegate = {
 		getContent : function(view, e) {			
@@ -216,7 +212,18 @@ Views.capsules.index = function(delegate) {
 		return row;
 	}
 	
-	view.add(tableView);
+	var new_capsule = Ti.UI.createButton({
+		title: "New Capsule",
+		width: 150,
+		height: 30,
+		bottom: 10
+	});
 	
-	return view;
+	new_capsule.addEventListener('click', Controllers.capsules.create);
+
+	win.setRightNavButton(new_capsule);
+	
+	win.add(tableView);
+	
+	return win;
 }
