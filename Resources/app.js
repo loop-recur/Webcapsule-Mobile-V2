@@ -6,6 +6,8 @@ Titanium.Facebook.permissions = ['publish_stream', 'read_stream', "offline_acces
 Ti.include('support/date.js');
 Ti.include('support/tweeter/twitter_api.js');
 
+isAndroid = false;
+
 App.run();
 
 App.setHost("http://localhost:3000/api");

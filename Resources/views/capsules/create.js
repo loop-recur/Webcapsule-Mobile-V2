@@ -14,16 +14,37 @@ Views.capsules.create = function(delegate) {
     returnKeyType:Ti.UI.RETURNKEY_NEXT,
 		top:50
 	});
+	
+	var where = Ti.UI.createTextField({
+		paddingLeft:5,
+		borderRadius:1,
+		borderColor:"black",
+    width:220,  
+    height:56,
+    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+		top:100
+	});
+	
+	var when = Ti.UI.createTextField({
+		paddingLeft:5,
+		borderRadius:1,
+		borderColor:"black",
+    width:220,  
+    height:56, 
+    value:Date.today().toString('M/d/yy'),
+    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+		top:150
+	});
 
 	var access_label = Ti.UI.createLabel({
 		text:'Private:',
-		top:150,
+		top:200,
 		left:50
 	});
 
 	var access_switch = Ti.UI.createSwitch({
 		value:true,
-		top:150,
+		top:200,
 		left:120
 	});
 
@@ -39,14 +60,26 @@ Views.capsules.create = function(delegate) {
 		log(capsule);
 		Controllers.capsules.show(capsule.id);
 	}
+	
+	if(Geolocator.servicesIsEnabled()) {
+		Geolocator.getCurrentAddress(function(currentAddress) {
+			where.value = currentAddress;
+		});
+	} else {
+		where.hintText = "No geolocation enabled, please type in address";
+	}
+
+	
 
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
 		var access = access_switch.value ? "private" : "public";
-		delegate.createCapsule(finish, {name : name.value, access: access, when : new Date(), where: "Here"});
+		delegate.createCapsule(finish, {name : name.value, access: access, when : new Date(), where: where.value});
 	});
 	
 	win.add(name);
+	win.add(where);
+	win.add(when);
 	win.add(access_label);
 	win.add(access_switch);
 	win.add(save_button);
