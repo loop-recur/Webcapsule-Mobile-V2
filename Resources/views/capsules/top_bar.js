@@ -196,6 +196,23 @@ Views.capsules.top_bar = function(capsule) {
 		top:177
 	});
 	
+	var slide_down =  Ti.UI.createAnimation({height:250});
+	var slide_up =  Ti.UI.createAnimation({height:80});
+	
+	compress.addEventListener('click', function(){
+		if(compress.backgroundImage == "images/capsule/webcap_show_hide_up.png") {
+			compress.top = 50;
+			compress.backgroundImage = "images/capsule/webcap_show_hide_down.png",
+			info_view.animate(slide_up);
+			Ti.App.fireEvent('collapse', {});
+		} else {
+			compress.top = 177;
+			compress.backgroundImage = "images/capsule/webcap_show_hide_up.png",
+			info_view.animate(slide_down);
+			Ti.App.fireEvent('expand', {});
+		}
+	});
+	
 	info_view.add(compress);
 	return info_view;
 }

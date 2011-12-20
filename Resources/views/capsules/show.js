@@ -5,10 +5,10 @@ Views.capsules.show = function(delegate, id) {
 	});
 			
 	var finish = function(capsule) {
-		var top_bar = Views.capsules.top_bar(capsule);
-		view.add(top_bar);
 		var mosaic = Views.capsules.mosaic(capsule, delegate.showRowClicked);
 		view.add(mosaic);
+		var top_bar = Views.capsules.top_bar(capsule);
+		view.add(top_bar);
 		
 		var add_to_capsule = Ti.UI.createButton({
 			title: "Add",
