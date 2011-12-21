@@ -5,6 +5,34 @@ Views.photos.create = function(delegate, capsule) {
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
+	var placeholder = Ti.UI.createView({
+		backgroundImage:"images/addnew/webcap_addcontent_photo_placeholder.png",
+		height:116,
+		width:180,
+		top:60
+	});
+	
+	win.add(placeholder);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	var progress_bar = Ti.UI.createProgressBar({
 		min:0,
 		max: 1,
@@ -29,7 +57,7 @@ Views.photos.create = function(delegate, capsule) {
 	var takePhoto = function() {
 		Ti.Media.showCamera({	
 			success:save,
-			cancel:function(){ win.close(); },
+			cancel:function(){ },
 			error:function(error) { alert('Camera does not appear to be working: ' + error.code); },
 			saveToPhotoGallery:true,
 			allowEditing:false,
@@ -40,7 +68,7 @@ Views.photos.create = function(delegate, capsule) {
 	var choosePhoto = function() {
 		Ti.Media.openPhotoGallery({	
 			success:save,
-			cancel:function(){ win.close(); },
+			cancel:function(){ },
 			error:function(error) { alert('Camera does not appear to be working: ' + error.code); },
 			allowEditing:false,
 			mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
