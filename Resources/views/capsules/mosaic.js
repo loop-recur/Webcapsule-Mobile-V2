@@ -5,7 +5,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 	var top_margin = 10;
 	
 	var view = Ti.UI.createView({
-		background:"transparent",
+		backgroundColor:"transparent",
 		height: 'auto',
 		bottom: 40
 	});

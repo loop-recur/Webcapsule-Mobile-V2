@@ -11,7 +11,7 @@ Views.capsules.show = function(delegate, id) {
 		win.add(top_bar);
 		
 		var add_to_capsule = Ti.UI.createButton({
-			title: "Add",
+			title: "Add Content",
 			width: 100,
 			height: 30,
 			bottom: 10

@@ -4,6 +4,15 @@ Views.videos.create = function(delegate, capsule) {
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
 	
+	var placeholder = Ti.UI.createView({
+		backgroundImage:"images/addnew/webcap_addcontent_video_placeholder.png",
+		height:116,
+		width:180,
+		top:60
+	});
+	
+	win.add(placeholder);
+	
 	var progress_bar = Ti.UI.createProgressBar({
 		min:0,
 		max: 1,

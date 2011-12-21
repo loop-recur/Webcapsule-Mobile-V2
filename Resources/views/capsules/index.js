@@ -30,7 +30,7 @@ Views.capsules.index = function(delegate, win) {
 		});
 	
 		var avatar = Ti.UI.createImageView({
-			image: Helpers.Application.assetPath(capsule.user.image), 
+			image: Helpers.Application.assetPath(capsule.activity.user.image), 
 			left:20,
 			top:6,
 			height:59,
@@ -40,7 +40,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(avatar);
 		
 		var user = Ti.UI.createLabel({
-			text: capsule.user.full_name, 
+			text: capsule.activity.user.full_name, 
 			font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:88,
@@ -52,7 +52,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(user);
 		
 		var added_new = Ti.UI.createLabel({
-			text: "added new ITEM TYPE GOES HERE", 
+			text: "Added new "+capsule.activity.kind, 
 			font:{fontFamily:'GillSans-Light',fontSize:"13dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:88,
@@ -96,6 +96,16 @@ Views.capsules.index = function(delegate, win) {
 		});
 	
 		row.add(capsule_creator);
+		
+		var creator_avatar = Ti.UI.createImageView({
+			image: Helpers.Application.assetPath(capsule.user.image), 
+			right:20,
+			top:75,
+			height:20,
+			width:20
+		});
+		
+		row.add(creator_avatar);
 		
 		var created = Ti.UI.createLabel({
 			text: "on " + Date.parse(capsule.created_at).toString("M/d/yy"),
