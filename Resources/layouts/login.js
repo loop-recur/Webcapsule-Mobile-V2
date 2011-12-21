@@ -88,7 +88,7 @@ Layouts.login = function(delegate) {
 	win.add(logo);
 	win.add(username);
 	win.add(password);
-	win.add(login_button);
+
 	win.add(login_facebook);
 	win.add(login_twitter);
 	win.add(create_account);

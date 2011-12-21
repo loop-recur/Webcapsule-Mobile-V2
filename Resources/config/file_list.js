@@ -4,6 +4,7 @@ FileList = [
 	, "ui/sub_tabs.js"
 	, "ui/button_group.js"
 	, "lib/file_cache.js"
+	, "lib/geolocator.js"
 	, "lib/authenticator.js"
 	, "layouts/application.js"
 	, "layouts/login.js"
