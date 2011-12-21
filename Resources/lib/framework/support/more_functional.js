@@ -214,3 +214,7 @@ empty = function(xs) {
 headTail = defn(function(fun, xs) {
 	return fun.apply(fun, [first(xs), rest(xs)]);
 });
+
+element = defn(function(x, xs) {
+	return xs.indexOf(x) != -1;
+});

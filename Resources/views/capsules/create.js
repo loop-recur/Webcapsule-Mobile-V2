@@ -43,7 +43,7 @@ Views.capsules.create = function(delegate) {
 	});
 
 	var access_switch = Ti.UI.createSwitch({
-		value:true,
+		value:false,
 		top:200,
 		left:120
 	});
@@ -56,8 +56,6 @@ Views.capsules.create = function(delegate) {
 	});
 	
 	finish = function(capsule) {
-		log("=============Capsule");
-		log(capsule);
 		Controllers.capsules.show(capsule.id);
 	}
 	

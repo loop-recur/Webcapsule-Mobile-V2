@@ -9,3 +9,4 @@ Helpers.images.resize = function(image, width, height) {
 
   return imageView.toImage();
 }
+

@@ -18,6 +18,8 @@ servicesIsEnabled = function() {
 
 
 getCurrentAddress = function(cb) {
+	var tries = 0;
+	
 	var locationCallback = function(e) {
 		if (!e.success || e.error) return log("Code translation: "+e.code);
 		

@@ -222,7 +222,7 @@ Views.capsules.index = function(delegate, win) {
 	new_capsule.addEventListener('click', Controllers.capsules.create);
 
 	win.setRightNavButton(new_capsule);
-	
+		
 	win.add(tableView);
 	
 	return win;

@@ -25,18 +25,19 @@ Views.videos.create = function(delegate, capsule) {
 		delegate.addVideo(finish, video, progress_bar);
 	}
 
-	var edit = function(e) {
-		Ti.Media.saveToPhotoGallery(e.media);
+	var edit = defn(function(saveIt, e) {
+		if(saveIt) Ti.Media.saveToPhotoGallery(e.media);
+		
 		Ti.Media.startVideoEditing({
 			media: e.media,
 			videoQuality: Ti.Media.QUALITY_MED,
 			success:save
 		});
-	}
+	});
 
 	var takeVideo = function() {
 		Ti.Media.showCamera({
-			success: edit,
+			success: edit(true),
 			cancel:function(){ win.close(); },
 			error:function(error){ alert('Camera does not appear to be working: ' + error.code); },
 			mediaTypes:Ti.Media.MEDIA_TYPE_VIDEO,
@@ -46,7 +47,7 @@ Views.videos.create = function(delegate, capsule) {
 
 	var chooseVideo = function() {
 		Ti.Media.openPhotoGallery({
-			success: edit,
+			success: edit(false),
 			cancel:function(){ win.close(); },
 			error:function(error){ alert('Camera does not appear to be working: ' + error.code); },
 			allowEditing:true,

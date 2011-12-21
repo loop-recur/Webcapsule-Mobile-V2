@@ -11,6 +11,7 @@ FileList = [
 	, "controllers/capsules.js"
 	, "controllers/application.js"
 	, "controllers/authentications.js"
+	, "controllers/tags.js"
 	, "views/capsules/index.js"
 	, "views/capsules/show.js"
 	, "views/capsules/create.js"
@@ -23,4 +24,5 @@ FileList = [
 	, "views/photos/show.js"
 	, "views/videos/create.js"
 	, "views/videos/show.js"
+	, "views/tags/create.js"
 ]
