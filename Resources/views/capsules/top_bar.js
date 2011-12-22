@@ -141,7 +141,7 @@ Views.capsules.top_bar = function(capsule) {
 	info_view.add(views_icon);
 	
 	var video_count = Ti.UI.createLabel({
-		text:"10",
+		text:capsule.video_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:33,
@@ -153,7 +153,7 @@ Views.capsules.top_bar = function(capsule) {
 	info_view.add(video_count);
 	
 	var photo_count = Ti.UI.createLabel({
-		text:"1000",
+		text:capsule.photo_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:86,
@@ -165,7 +165,7 @@ Views.capsules.top_bar = function(capsule) {
 	info_view.add(photo_count);
 	
 	var comment_count = Ti.UI.createLabel({
-		text:"100",
+		text:capsule.comment_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:143,
@@ -177,7 +177,7 @@ Views.capsules.top_bar = function(capsule) {
 	info_view.add(comment_count);
 	
 	var views_count = Ti.UI.createLabel({
-		text:"1000",
+		text:capsule.views,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:196,
@@ -198,6 +198,8 @@ Views.capsules.top_bar = function(capsule) {
 	
 	var slide_down =  Ti.UI.createAnimation({height:250});
 	var slide_up =  Ti.UI.createAnimation({height:80});
+	
+	tagged.addEventListener('click', Controllers.tags.create.p(capsule, tagged));
 	
 	compress.addEventListener('click', function(){
 		if(compress.backgroundImage == "images/capsule/webcap_show_hide_up.png") {

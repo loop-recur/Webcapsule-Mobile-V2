@@ -2,8 +2,8 @@ Controllers.tags = (function() {
 	var Api = RestApi("tags");
 	var self = {};
 	
-	var create = function(capsule) {
-		Nav.open(Views.tags.create(self, capsule));
+	var create = function(capsule, tagged) {
+		Nav.open(Views.tags.create(self, capsule, tagged));
 	}
 	
 	

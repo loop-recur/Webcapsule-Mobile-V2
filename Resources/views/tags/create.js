@@ -1,4 +1,4 @@
-Views.tags.create = function(delegate, capsule) {	
+Views.tags.create = function(delegate, capsule, tagged) {	
 	var rows = [];
 	var labels = map('.label', capsule.tags);
 	
@@ -124,7 +124,8 @@ Views.tags.create = function(delegate, capsule) {
 	}
 	
 	var finish = function(tags) {
-		Ti.App.fireEvent("tagsAdded", {tags: tags});
+		tagged.text = tags.length+" people tagged";
+		capsule.tags = tags;
 		Nav.close(win);
 	}
 	

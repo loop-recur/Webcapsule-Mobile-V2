@@ -164,7 +164,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(views_icon);
 		
 		var video_count = Ti.UI.createLabel({
-			text:"10",
+			text:capsule.video_count,
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:41,
@@ -176,7 +176,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(video_count);
 		
 		var photo_count = Ti.UI.createLabel({
-			text:"1000",
+			text: capsule.photo_count,
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:84,
@@ -188,7 +188,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(photo_count);
 		
 		var comment_count = Ti.UI.createLabel({
-			text:"100",
+			text:capsule.comment_count,
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:137,
@@ -200,7 +200,7 @@ Views.capsules.index = function(delegate, win) {
 		row.add(comment_count);
 		
 		var views_count = Ti.UI.createLabel({
-			text:"1000",
+			text:capsule.views,
 			font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:187,
@@ -210,6 +210,14 @@ Views.capsules.index = function(delegate, win) {
 		});
 		
 		row.add(views_count);
+		
+		var activity_content_view = Views.capsules[capsule.content_partial](capsule);
+		activity_content_view.top = 110;
+		activity_content_view.left = 20;
+		activity_content_view.width = 300;
+		activity_content_view.height = 90;
+		
+		row.add(activity_content_view);
 		
 		var go_to_capsule = Ti.UI.createButton({
 			backgroundImage:"images/feed/webcap_feed_go_to_capsule_btn.png",
@@ -223,6 +231,7 @@ Views.capsules.index = function(delegate, win) {
 		go_to_capsule.addEventListener('click', delegate.tableClicked);
 	
 		row.add(go_to_capsule);
+		
 		return row;
 	}
 	
