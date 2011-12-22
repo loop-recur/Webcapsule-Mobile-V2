@@ -7,7 +7,9 @@ Views.capsules.two_comments = function(capsule) {
 		var left_padding = old_left+30;
 		
 		var comment_view = Ti.UI.createView({
-			backgroundColor:"yellow",
+			backgroundColor:"#8E9DA4",
+			width:90,
+			height:68
 		});
 	
 		var body = Ti.UI.createLabel({
@@ -16,6 +18,7 @@ Views.capsules.two_comments = function(capsule) {
 			color:"#444444",
 			left:left_padding+10,
 			top:10,
+			left:10, 
 			height:"auto",
 			width:"auto"
 		});
@@ -24,6 +27,7 @@ Views.capsules.two_comments = function(capsule) {
 			image: Helpers.Application.assetPath(comment.user.image), 
 			left:left_padding+5,
 			top:40,
+			left:10,
 			height:20,
 			width:20
 		});
@@ -34,6 +38,7 @@ Views.capsules.two_comments = function(capsule) {
 			color:"#333333",
 			left:left_padding+20,
 			top:45,
+			right:5,
 			height:"auto",
 			width:"auto"
 		});

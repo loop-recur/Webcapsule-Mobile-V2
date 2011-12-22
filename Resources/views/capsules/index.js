@@ -212,10 +212,10 @@ Views.capsules.index = function(delegate, win) {
 		row.add(views_count);
 		
 		var activity_content_view = Views.capsules[capsule.content_partial](capsule);
-		activity_content_view.top = 110;
-		activity_content_view.left = 20;
-		activity_content_view.width = 300;
-		activity_content_view.height = 90;
+		activity_content_view.top = 117;
+		activity_content_view.left = 12;
+		activity_content_view.width = 295;
+		activity_content_view.height = 70;
 		
 		row.add(activity_content_view);
 		

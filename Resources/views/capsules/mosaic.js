@@ -4,10 +4,16 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 	var left_margin = 10;
 	var top_margin = 10;
 	
-	var view = Ti.UI.createView({
+	var view = Ti.UI.createScrollView({
 		backgroundColor:"transparent",
-		height: 'auto',
-		bottom: 40
+		height: 200,
+		width:320,
+		contentWidth:318,
+		contentHeight:'auto',
+		showHorizontalScrollIndicator:true,
+		showVerticalScrollIndicator:false,
+		bottom:0,
+		left:0
 	});
 	
 	var makeComment = function(comment) {
@@ -96,20 +102,20 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 		
 		if(new_left > 400) {
 			new_top = position.top + vertical_spacing;
-			new_left = 5;
+			new_left = 0;
 		}
 		
 		return {left: new_left, top: new_top}
 	}
 	
-	reduce(buildContent, {left : 5, top : 35}, contents);
+	reduce(buildContent, {left : 0, top : 35}, contents);
 	
 	Ti.App.addEventListener('expand', function(e) {
-		view.height = "auto";
+		view.height = 200;
 	});
 	
 	Ti.App.addEventListener('collapse', function(e) {
-		view.height = "80%";
+		view.height = 350;
 	});
 	
 	return view;

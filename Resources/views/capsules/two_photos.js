@@ -9,8 +9,8 @@ Views.capsules.two_photos = function(capsule) {
 		var image = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(photo.url),
 			left:old_left+10,
-			height:87,
-			width:87
+			height:70,
+			width:80
 		});
 
 		view.add(image);
