@@ -75,6 +75,7 @@ Views.tags.create = function(delegate, capsule) {
 
 	var table = Ti.UI.createTableView({
 		backgroundColor:"transparent",
+		separatorColor:"#B9BFC1",
 		top:40,
 		visible: false
 	});

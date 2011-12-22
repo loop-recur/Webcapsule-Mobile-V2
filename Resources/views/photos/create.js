@@ -14,25 +14,6 @@ Views.photos.create = function(delegate, capsule) {
 	
 	win.add(placeholder);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	var progress_bar = Ti.UI.createProgressBar({
 		min:0,
 		max: 1,
@@ -75,26 +56,25 @@ Views.photos.create = function(delegate, capsule) {
 		});	
 	}
 
-	var createTableViewRow = function(kind) {
-		var row = Ti.UI.createTableViewRow({
-			title: kind,
-			kind: kind
-		});
-
-		return row;
-	}
-
-	var table = Ti.UI.createTableView({
-		backgroundColor:"transparent",
-		top:250,
-		bottom:0,
-		data: map(createTableViewRow, ["Choose Photo", "Take Photo"])
+	var choose_photo = Ti.UI.createButton({
+		title:"Choose Photo",
+		width: 250,
+		height:40,
+		top:270
 	});
 
-	table.addEventListener('click', function(e) {
-		e.source.kind == "Choose Photo" ? choosePhoto() : takePhoto();
+	var take_photo = Ti.UI.createButton({
+		title:"Take Photo",
+		width: 250,
+		height:40,
+		top:320
 	});
+	
+	win.add(choose_photo);
+	win.add(take_photo);
 
-	win.add(table);
+	choose_photo.addEventListener('click', function(){ choosePhoto(); });
+	take_photo.addEventListener('click', function(){ takePhoto(); });
+
 	return win;
 }

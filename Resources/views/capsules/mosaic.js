@@ -12,7 +12,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 	
 	var makeComment = function(comment) {
 		var comment_view = Ti.UI.createView({
-			backgroundColor:"yellow",
+			backgroundColor:"transparent",
 		});
 	
 		var body = Ti.UI.createLabel({

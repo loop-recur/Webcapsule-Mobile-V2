@@ -26,13 +26,14 @@ Views.capsules.index = function(delegate, win) {
 			height:279,
 			width:320,
 			id: capsule.id,
-			className:'capsule'
+			className:'capsule',
+			selectionStyle:Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
 		});
 	
 		var avatar = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(capsule.activity.user.image), 
 			left:20,
-			top:6,
+			top:9,
 			height:59,
 			width:59
 		});
@@ -44,7 +45,7 @@ Views.capsules.index = function(delegate, win) {
 			font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
 			color:page_text_color,
 			left:88,
-			top:9,
+			top:5,
 			height:20,
 			width:200
 		});
@@ -80,7 +81,8 @@ Views.capsules.index = function(delegate, win) {
 			left:22,
 			top:61,
 			height:17,
-			width:200
+			width:225,
+			textAlign:"right"
 		});
 		
 		row.add(name);
@@ -92,7 +94,8 @@ Views.capsules.index = function(delegate, win) {
 			left:22,
 			top:75,
 			height:17,
-			width:240
+			width:225,
+			textAlign:"right"
 		});
 	
 		row.add(capsule_creator);
@@ -100,9 +103,9 @@ Views.capsules.index = function(delegate, win) {
 		var creator_avatar = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(capsule.user.image), 
 			right:20,
-			top:75,
-			height:20,
-			width:20
+			top:65,
+			height:45,
+			width:45
 		});
 		
 		row.add(creator_avatar);
@@ -114,7 +117,8 @@ Views.capsules.index = function(delegate, win) {
 			left:22,
 			top:93,
 			height:17,
-			width:200
+			width:225,
+			textAlign:"right"
 		});
 		
 		row.add(created);

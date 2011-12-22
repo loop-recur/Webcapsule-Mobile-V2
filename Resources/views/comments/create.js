@@ -15,12 +15,14 @@ Views.comments.create = function(delegate, capsule) {
 	
 	var field = Ti.UI.createTextArea({
 		backgroundColor:"transparent",
-		paddingLeft:20,
+		paddingLeft:10,
 		paddingTop:10,
 		paddingRight:20,
 		value:'Add Comment...',
-		height:200,
-		width:278,
+		height:192,
+		width:265,
+		left:8,
+		top:8,
 		textAlign:'left',
 		font:{fontSize:20,fontFamily:'Helvetica Neue', fontWeight:'regular'},
 		returnKeyType:Ti.UI.RETURNKEY_DONE,
@@ -37,13 +39,6 @@ Views.comments.create = function(delegate, capsule) {
 	});
 	
 	win.add(ok_button);
-	
-	
-	
-	
-	
-	
-	
 	
 	field.addEventListener('focus', function() {
 		if(field.value === "Add Comment...") field.value = "";

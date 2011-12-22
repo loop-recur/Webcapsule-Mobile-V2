@@ -47,7 +47,7 @@ Views.videos.create = function(delegate, capsule) {
 	var takeVideo = function() {
 		Ti.Media.showCamera({
 			success: edit(true),
-			cancel:function(){ win.close(); },
+			cancel:function(){},
 			error:function(error){ alert('Camera does not appear to be working: ' + error.code); },
 			mediaTypes:Ti.Media.MEDIA_TYPE_VIDEO,
 			autohide:true
@@ -57,35 +57,35 @@ Views.videos.create = function(delegate, capsule) {
 	var chooseVideo = function() {
 		Ti.Media.openPhotoGallery({
 			success: edit(false),
-			cancel:function(){ win.close(); },
+			cancel:function(){},
 			error:function(error){ alert('Camera does not appear to be working: ' + error.code); },
 			allowEditing:true,
 			videoQuality: Ti.Media.QUALITY_MED,
 			mediaTypes:[Ti.Media.MEDIA_TYPE_VIDEO]
 		});	
 	}
-
-	var createTableViewRow = function(kind) {
-		var row = Ti.UI.createTableViewRow({
-			title: kind,
-			kind: kind
-		});
-
-		return row;
-	}
-
-	var table = Ti.UI.createTableView({
-		backgroundColor:"transparent",
-		top:250,
-		bottom:0,
-		data: map(createTableViewRow, ["Choose Video", "Take Video"])
+	
+	
+	var choose_video = Ti.UI.createButton({
+		title:"Choose Video",
+		width: 250,
+		height:40,
+		top:270
 	});
 
-	table.addEventListener('click', function(e) {
-		e.source.kind == "Choose Video" ? chooseVideo() : takeVideo();
+	var take_video = Ti.UI.createButton({
+		title:"Take Video",
+		width: 250,
+		height:40,
+		top:320
 	});
+	
+	win.add(choose_video);
+	win.add(take_video);
 
-	win.add(table);
+	choose_video.addEventListener('click', function(){ chooseVideo(); });
+	take_video.addEventListener('click', function(){ takeVideo(); });
+
 	return win;
 
 }

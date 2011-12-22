@@ -96,7 +96,7 @@ Views.capsules.create = function(delegate) {
 	
 	var access_label = Ti.UI.createLabel({
 		text:'Private:',
-		font:{fontFamily:'GillSans-Light',fontSize:"13dp",fontWeight:'regular'},
+		font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
 		color:page_text_color,
 		width:55,
 		height:24,
@@ -107,12 +107,10 @@ Views.capsules.create = function(delegate) {
 
 	var access_switch = Ti.UI.createSwitch({
 		value:false,
-		top:200,
-		left:120
+		top:117
 	});
 	
 	view.add(access_switch);
-	
 	
 	var tag_area = Ti.UI.createView({
 		height:30,
