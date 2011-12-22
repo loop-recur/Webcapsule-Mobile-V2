@@ -323,7 +323,7 @@ OAuth.setProperties(OAuth, // utility functions
 ,
     timestamp: function timestamp() {
         var t = (new Date()).getTime() + OAuth.timeCorrectionMsec;
-        return Math.floor(t / 1000).toFixed(0);
+        return Math.floor(t / 1000);
     }
 ,
     nonce: function nonce(length) {

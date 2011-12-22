@@ -174,10 +174,14 @@
       }
     };
     HTTPClientWithCache.prototype.prune_cache = function(seconds) {
-      seconds != null ? seconds : seconds = this.options.pruneSeconds;
+		try{
+			seconds != null ? seconds : seconds = this.options.pruneSeconds;
       db = Titanium.Database.open('http_client_cache');
       db.execute("DELETE FROM REQUESTS WHERE UPDATED_AT < DATETIME('now','-" + seconds + " seconds')");
       return db.close();
+		} catch(e) {
+			db.close();
+		}
     };
     HTTPClientWithCache.prototype._validate = function() {
       if (this.options.url != null) {

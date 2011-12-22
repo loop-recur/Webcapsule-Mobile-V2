@@ -4,7 +4,9 @@ Titanium.Facebook.appid = "147009708687795";
 Titanium.Facebook.permissions = ['publish_stream', 'read_stream', "offline_access", "email"];
 
 Ti.include('support/date.js');
-Ti.include('support/tweeter/twitter_api.js');
+Ti.include('support/oauth.js');
+Ti.include('support/sha1.js');
+Ti.include('support/birdhouse.js');
 
 isAndroid = false;
 

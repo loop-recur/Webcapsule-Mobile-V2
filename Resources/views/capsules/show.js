@@ -22,24 +22,6 @@ Views.capsules.show = function(delegate, id) {
 		});
 
 		win.setRightNavButton(add_to_capsule);
-		
-		// BEGIN TAGS
-		Ti.App.addEventListener("tagsAdded", function(e) {
-			log("=======TAGS ADDED======");
-			log(e.tags);
-		});
-
-		var tags = Ti.UI.createButton({
-			title: "Tags",
-			width: 150,
-			height: 30,
-			bottom: 10
-		});
-
-		tags.addEventListener('click', Controllers.tags.create.p(capsule));
-
-		win.setLeftNavButton(tags);
-		// END TAGS
 	}
 	
 	delegate.getSingle(finish, {id: id});

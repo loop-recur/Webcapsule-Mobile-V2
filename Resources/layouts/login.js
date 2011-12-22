@@ -75,7 +75,6 @@ Layouts.login = function(delegate) {
 		height:55,
 		width:290
 	});
-	
 
 	var create_account = Ti.UI.createButton({
 		backgroundImage:"images/login/webcap_create_new_user_btn.png",
@@ -83,6 +82,27 @@ Layouts.login = function(delegate) {
 		top:393,
 		height:55,
 		width:290
+	});
+	
+	// TODO: spash
+	login_twitter.addEventListener('click', function(){
+		Helpers.user.connectTwitter({
+			success: function(user) {
+				Controllers.application.index();
+				win.close();
+			},
+			error: function(){ alert("Couldn't login you in with Twitter"); }
+		});
+	});
+	
+	login_facebook.addEventListener('click', function(){
+		Helpers.user.connectFacebook({
+			success: function(user) {
+				Controllers.application.index();
+				win.close();
+			},
+			error: function(){ alert("Couldn't authorize Facebook"); }
+		});
 	});
 	
 	win.add(logo);
