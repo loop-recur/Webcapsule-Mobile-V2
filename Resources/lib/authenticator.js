@@ -25,10 +25,12 @@ var authenticate = function(username, password) {
 
 var setCredentials = compose(_setHttpAuth('credentials'), _makeAuthString);
 var storeCredentials = compose(FileCache.set('credentials'), _makeAuthString);
+var storeAuthToken = FileCache.set('auth_token');
 
 return { isAuthenticated: isAuthenticated,
 				authenticate: authenticate,
 				storeCredentials: storeCredentials,
-				setCredentials: setCredentials }
+				setCredentials: setCredentials,
+				storeAuthToken: storeAuthToken }
 
 })();

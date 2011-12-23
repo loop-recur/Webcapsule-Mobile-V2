@@ -88,7 +88,6 @@ Layouts.login = function(delegate) {
 	login_twitter.addEventListener('click', function(){
 		Helpers.user.connectTwitter({
 			success: function(user) {
-				Controllers.application.index();
 				win.close();
 			},
 			error: function(){ alert("Couldn't login you in with Twitter"); }
@@ -98,7 +97,6 @@ Layouts.login = function(delegate) {
 	login_facebook.addEventListener('click', function(){
 		Helpers.user.connectFacebook({
 			success: function(user) {
-				Controllers.application.index();
 				win.close();
 			},
 			error: function(){ alert("Couldn't authorize Facebook"); }

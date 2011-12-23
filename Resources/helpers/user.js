@@ -36,11 +36,7 @@ Helpers.user.connectFacebook = function(callbacks) {
 		if(data) {
 			data.provider = "facebook";
 			data.token = Ti.Facebook.accessToken;
-			App.action(undefined, "omniauth_callbacks#create", {
-				data : data,
-				success : callbacks.success,
-				error : callbacks.error
-			});
+			Controllers.omniauth_callbacks.create(callbacks.success, data);
 		} else {
 			callbacks.error();
 		}
@@ -59,11 +55,7 @@ Helpers.user.connectTwitter = function(callbacks) {
 			data.token = data.oauth_token;
 			data.secret = data.oauth_token_secret;
 			data.provider = "twitter";
-			App.action(undefined, "omniauth_callbacks#create", {
-				data : data,
-				success : callbacks.success,
-				error : callbacks.error
-			});
+			Controllers.omniauth_callbacks.create(callbacks.success, data);
 		}	else {
 			Ti.API.info("no data");
 			callbacks.error();
