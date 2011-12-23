@@ -119,7 +119,7 @@ Views.capsules.create = function(delegate) {
 		top:100
 	});
 	
-	view.add(tag_area);
+	// view.add(tag_area);
 	
 	var tag_icon = Ti.UI.createView({
 		backgroundImage:"images/capsule/webcap_tag_icon.png",

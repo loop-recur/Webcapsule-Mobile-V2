@@ -12,6 +12,6 @@ isAndroid = false;
 
 App.run();
 
-App.setHost("http://localhost:3000/api");
+App.setHost("http://www.webcapsule.com`/api");
 
 Authenticator.isAuthenticated() ? Controllers.application.index() : Controllers.authentications.index();
