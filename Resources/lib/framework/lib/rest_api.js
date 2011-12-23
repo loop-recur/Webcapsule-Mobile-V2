@@ -6,7 +6,7 @@ RestApi = function(name) {
 		var oldError = callbacks.error || function(){};
 						
 		callbacks.error = function(r) {
-			if(r) oldError(r.responseText);
+			r ? oldError(r.responseText) : oldError();
 		};
 		
 		callbacks.success = function(r) {
