@@ -3,7 +3,7 @@ Controllers.capsules = (function() {
 	var self = {};
 	
 	var index = function(win) {
-		Views.capsules.index(self, win);
+		return Views.capsules.index(self, win);
 	};
 	
 	var create = function() {
