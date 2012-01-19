@@ -6,7 +6,8 @@ Layouts.application = function(delegate) {
 	var win = Ti.UI.createWindow({
 		title: "Feed",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		navBarHidden:false
+		navBarHidden:false,
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	Nav = Ti.UI.iPhone.createNavigationGroup({

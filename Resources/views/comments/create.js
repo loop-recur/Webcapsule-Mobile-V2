@@ -1,7 +1,8 @@
 Views.comments.create = function(delegate, capsule) {
 	var win = Ti.UI.createWindow({
 		title: "Add Comment",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var field_bg = Ti.UI.createView({

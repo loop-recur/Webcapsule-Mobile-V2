@@ -4,7 +4,8 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	
 	var win = Ti.UI.createWindow({
 		title: "Add Tags",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var activity = Ti.UI.createActivityIndicator({
