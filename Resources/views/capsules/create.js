@@ -16,12 +16,13 @@ Views.capsules.create = function(delegate) {
 	
 	win.add(view);
 	
-	var avatar = Ti.UI.createImageView({
+	var avatar = UI.createAvatar({
 		image:App.getCurrentUser().image, 
 		left:12,
 		top:12,
 		height:59,
-		width:59
+		width:59,
+		id: App.getCurrentUser().id
 	});
 	
 	view.add(avatar);

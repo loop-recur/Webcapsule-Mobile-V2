@@ -64,9 +64,7 @@ Views.capsules.update = function(delegate, capsule) {
 	add_photo.addEventListener('click', delegate.addContent(capsule));
 	add_video.addEventListener('click', delegate.addContent(capsule));
 	add_comment.addEventListener('click', delegate.addContent(capsule));
-	add_websnippet.addEventListener('click', function(){
-		alert("Coming soon.");
-	});
+	add_websnippet.addEventListener('click', Controllers.websnippets.init.p(capsule.id));
 
 	return view;
 }

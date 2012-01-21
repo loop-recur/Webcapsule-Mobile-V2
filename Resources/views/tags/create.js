@@ -44,7 +44,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 			checkbox: checkbox
 		});
 		
-		var avatar = Ti.UI.createImageView({
+		var avatar = UI.createImageView({
 			image: Helpers.Application.assetPath(tag.image),
 			left: 10,
 			width: 40,

@@ -3,6 +3,7 @@ Titanium.include('../lib/framework/support/more_functional.js');
 Titanium.include('../lib/framework/support/functional_async.js');
 Titanium.include('../lib/framework/support/temp_id.js');
 Titanium.include('../lib/framework/lib/base.js');
+Titanium.include('../config/environments.js');
 Titanium.include('../lib/framework/lib/bootstrap.js');
 Titanium.include('../lib/framework/lib/app.js');
 Titanium.include('../lib/framework/lib/views.js');

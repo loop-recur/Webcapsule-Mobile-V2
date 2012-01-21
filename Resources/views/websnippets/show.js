@@ -1,12 +1,12 @@
-Views.comments.show = function(comment) {
+Views.websnippets.show = function(websnippet) {
 	var win = Ti.UI.createWindow({
-		title: "Comments",
+		title: "Websnippets",
 		backgroundColor: "white",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var body = Ti.UI.createLabel({
-		text:comment.content, 
+		text:websnippet.body, 
 		font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
 		color:"#444444",
 		left:10,
@@ -16,16 +16,16 @@ Views.comments.show = function(comment) {
 	});
 	
 	var avatar = UI.createAvatar({
-		image: Helpers.Application.assetPath(comment.user.image), 
+		image: Helpers.Application.assetPath(websnippet.user.image), 
 		left:5,
 		top:20,
 		height:87,
 		width:87,
-		id: comment.user.id
+		id: websnippet.user.id
 	});
 	
 	var user = Ti.UI.createLabel({
-		text: "By " +comment.user.full_name, 
+		text: "By " +websnippet.user.full_name, 
 		font:{fontFamily:'GillSans-Light',fontSize:"18dp",fontWeight:'regular'},
 		color:"#333333",
 		left:80,

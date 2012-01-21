@@ -3,6 +3,7 @@ Bootstrap = {};
 Bootstrap.run = function() {
 	includeAllFiles();
 	App.http_client = LoopRecur.HttpClient();
+	runEnvironment();
 	
 	function includeAllFiles() {
 		Views[Ti.Platform.osname] = {};
@@ -47,6 +48,6 @@ Bootstrap.run = function() {
 	function runEnvironment() {
 		var isIphone = Titanium.Filesystem.resourcesDirectory.split("/")[1] === "var";
 		var environment = isIphone ? "production" : "development";
-		App.environments[environment]();
+		Environments[environment]();
 	}
 };

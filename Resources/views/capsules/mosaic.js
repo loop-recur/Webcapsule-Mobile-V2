@@ -1,5 +1,5 @@
 Views.capsules.mosaic = function(capsule, rowClicked) {	
-	var contents = flatten([capsule.comments, capsule.photos, capsule.videos]);
+	var contents = flatten([capsule.comments, capsule.photos, capsule.videos, capsule.websnippets]);
 	
 	var left_margin = 10;
 	var top_margin = 10;
@@ -16,6 +16,46 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 		left:0
 	});
 	
+	var makeWebsnippet = function(websnippet) {
+		var websnippet_view = Ti.UI.createView({
+			backgroundColor:"transparent",
+		});
+	
+		var body = Ti.UI.createLabel({
+			text:websnippet.body, 
+			font:{fontFamily:'GillSans',fontSize:"11dp",fontWeight:'regular'},
+			color:"#444444",
+			left:10,
+			top:10,
+			height:"auto",
+			width:"auto"
+		});
+	
+		var avatar = UI.createAvatar({
+			image: Helpers.Application.assetPath(websnippet.user.image), 
+			left:5,
+			top:40,
+			height:20,
+			width:20,
+			id: websnippet.user_id
+		});
+	
+		var user = Ti.UI.createLabel({
+			text: "By " +websnippet.user.full_name, 
+			font:{fontFamily:'GillSans-Light',fontSize:"11dp",fontWeight:'regular'},
+			color:"#333333",
+			left:20,
+			top:45,
+			height:"auto",
+			width:"auto"
+		});
+		
+		websnippet_view.add(body);
+		websnippet_view.add(avatar);
+		websnippet_view.add(user);
+		return websnippet_view;
+	}
+	
 	var makeComment = function(comment) {
 		var comment_view = Ti.UI.createView({
 			backgroundColor:"transparent",
@@ -31,12 +71,13 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 			width:"auto"
 		});
 	
-		var avatar = Ti.UI.createImageView({
+		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(comment.user.image), 
 			left:5,
 			top:40,
 			height:20,
-			width:20
+			width:20,
+			id: comment.user.id
 		});
 	
 		var user = Ti.UI.createLabel({
@@ -74,6 +115,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 		if(content.kind == "photos") content_view = makePhoto(content);
 		if(content.kind == "comments") content_view = makeComment(content);
 		if(content.kind == "videos") content_view = makeVideo(content);
+		if(content.kind == "websnippets") content_view = makeWebsnippet(content);
 		
 		content_view.top = top;
 		content_view.left = left;

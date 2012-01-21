@@ -7,12 +7,13 @@ Views.capsules.top_bar = function(capsule) {
 		height:250
 	});
 	
-	var avatar = Ti.UI.createImageView({
+	var avatar = UI.createAvatar({
 		image: Helpers.Application.assetPath(capsule.user.image), 
 		left:12,
 		top:12,
 		height:59,
-		width:59
+		width:59,
+		id: capsule.user.id
 	});
 	
 	info_view.add(avatar);
@@ -200,6 +201,8 @@ Views.capsules.top_bar = function(capsule) {
 	var slide_up =  Ti.UI.createAnimation({height:80});
 	
 	tagged.addEventListener('click', Controllers.tags.create.p(capsule, tagged));
+	
+	share.addEventListener('click', Controllers.sharings.init.p(capsule.id));
 	
 	compress.addEventListener('click', function(){
 		if(compress.backgroundImage == "images/capsule/webcap_show_hide_up.png") {

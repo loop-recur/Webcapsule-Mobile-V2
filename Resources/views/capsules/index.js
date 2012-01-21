@@ -30,12 +30,13 @@ Views.capsules.index = function(delegate, win) {
 			selectionStyle:Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
 		});
 	
-		var avatar = Ti.UI.createImageView({
+		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(capsule.activity.user.image), 
 			left:20,
 			top:9,
 			height:59,
-			width:59
+			width:59,
+			id: capsule.activity.user.id
 		});
 		
 		row.add(avatar);
@@ -100,12 +101,13 @@ Views.capsules.index = function(delegate, win) {
 	
 		row.add(capsule_creator);
 		
-		var creator_avatar = Ti.UI.createImageView({
+		var creator_avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(capsule.user.image), 
 			right:20,
 			top:65,
 			height:45,
-			width:45
+			width:45,
+			id: capsule.user.id
 		});
 		
 		row.add(creator_avatar);

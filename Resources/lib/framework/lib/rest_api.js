@@ -40,7 +40,7 @@ RestApi = function(name) {
 		options = options || {};
 
 		callbacks.error = function(r) {
-			r ? oldError(r.responseText) : oldError();
+			r ? oldError(JSON.parse(r.responseText)) : oldError();
 		};
 		
 		callbacks.success = function(r) {

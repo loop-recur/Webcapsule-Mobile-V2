@@ -41,6 +41,7 @@ return false;return true;}}
 lambda=function(object){return object.toFunction();}
 invoke=function(methodName){var args=Array.slice(arguments,1);return function(object){return object[methodName].apply(object,Array.slice(arguments,1).concat(args));}}
 pluck=function(name){return function(object){return object[name];}}
+pluckFrom=function(object){return function(name){return object[name];}}
 until=defn(function(pred,fn){fn=Function.toFunction(fn);pred=Function.toFunction(pred);return function(value){while(!pred.call(null,value))
 value=fn.call(null,value);return value;}})
 zip=function(){var n=Math.min.apply(null,map('.length',arguments));var results=new Array(n);for(var i=0;i<n;i++){var key=String(i);results[key]=map(pluck(key),arguments);};return results;}

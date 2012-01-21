@@ -85,6 +85,8 @@ Layouts.login = function(delegate) {
 		width:290
 	});
 	
+	create_account.addEventListener('click', Controllers.accounts.init);
+	
 	// TODO: spash
 	login_twitter.addEventListener('click', function(){
 		Helpers.user.connectTwitter({

@@ -23,13 +23,14 @@ Views.capsules.two_comments = function(capsule) {
 			width:"auto"
 		});
 	
-		var avatar = Ti.UI.createImageView({
+		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(comment.user.image), 
 			left:left_padding+5,
 			top:40,
 			left:10,
 			height:20,
-			width:20
+			width:20,
+			id: comment.user.id
 		});
 	
 		var user = Ti.UI.createLabel({

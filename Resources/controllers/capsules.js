@@ -22,7 +22,6 @@ Controllers.capsules = (function() {
 	self.getAll = Api.all;
 	self.getSingle = Api.find;
 	self.feed_options = ["Friends", "Mine", "Everybody", "Tagged"];
-	self.content_types = ["videos", "photos", "comments"];
 	
 	self.tableClicked = function(e) {
 		if(e.source.id) show(e.source.id);
@@ -50,6 +49,10 @@ Controllers.capsules = (function() {
 	
 	self.addVideo = function(cb, video, progress_bar) {
 		RestApi("videos").save(cb, video, {progress_bar: progress_bar});
+	};
+	
+	self.addWebsnippet = function(cb, snippet) {
+		RestApi("websnippets").save(cb, snippet);
 	};
 	
 	self.createCapsule = function(cb, capsule) {

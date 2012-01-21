@@ -12,6 +12,4 @@ isAndroid = false;
 
 App.run();
 
-App.setHost("http://localhost:3000/api");
-
 Authenticator.isAuthenticated() ? Controllers.application.index() : Controllers.authentications.index();
