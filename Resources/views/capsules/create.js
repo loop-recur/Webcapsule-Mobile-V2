@@ -22,7 +22,7 @@ Views.capsules.create = function(delegate) {
 		top:12,
 		height:59,
 		width:59,
-		id: App.getCurrentUser().id
+		user: App.getCurrentUser()
 	});
 	
 	view.add(avatar);

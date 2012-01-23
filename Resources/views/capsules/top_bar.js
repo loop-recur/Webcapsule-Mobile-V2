@@ -13,7 +13,7 @@ Views.capsules.top_bar = function(capsule) {
 		top:12,
 		height:59,
 		width:59,
-		id: capsule.user.id
+		user: capsule.user
 	});
 	
 	info_view.add(avatar);

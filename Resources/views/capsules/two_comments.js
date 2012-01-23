@@ -30,7 +30,7 @@ Views.capsules.two_comments = function(capsule) {
 			left:10,
 			height:20,
 			width:20,
-			id: comment.user.id
+			user: comment.user
 		});
 	
 		var user = Ti.UI.createLabel({

@@ -21,7 +21,7 @@ Views.websnippets.show = function(websnippet) {
 		top:20,
 		height:87,
 		width:87,
-		id: websnippet.user.id
+		user: websnippet.user
 	});
 	
 	var user = Ti.UI.createLabel({

@@ -21,6 +21,7 @@ FileList = [
 	, "controllers/tags.js"
 	, "controllers/sharings.js"
 	, "controllers/websnippets.js"
+	, "controllers/users.js"
 	, "views/accounts/init.js"
 	, "views/capsules/index.js"
 	, "views/capsules/show.js"
@@ -28,6 +29,7 @@ FileList = [
 	, "views/capsules/mosaic.js"
 	, "views/capsules/top_bar.js"
 	, "views/capsules/update.js"
+	, "views/capsules/feed_row.js"
 	, "views/capsules/eight_photos.js"
 	, "views/capsules/four_photos.js"
 	, "views/capsules/two_photos.js"
@@ -44,4 +46,5 @@ FileList = [
 	, "views/sharings/init.js"
 	, "views/websnippets/init.js"
 	, "views/websnippets/show.js"
+	, "views/users/show.js"
 ]

@@ -21,7 +21,7 @@ Views.comments.show = function(comment) {
 		top:20,
 		height:87,
 		width:87,
-		id: comment.user.id
+		user: comment.user
 	});
 	
 	var user = Ti.UI.createLabel({

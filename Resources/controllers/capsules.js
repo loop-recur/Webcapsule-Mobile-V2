@@ -23,10 +23,6 @@ Controllers.capsules = (function() {
 	self.getSingle = Api.find;
 	self.feed_options = ["Friends", "Mine", "Everybody", "Tagged"];
 	
-	self.tableClicked = function(e) {
-		if(e.source.id) show(e.source.id);
-	}
-	
 	self.showRowClicked = function(e) {
 		if(e.source.kind) Nav.open(Views[e.source.kind].show(e.source.content));
 	}

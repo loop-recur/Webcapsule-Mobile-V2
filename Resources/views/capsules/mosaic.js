@@ -37,7 +37,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 			top:40,
 			height:20,
 			width:20,
-			id: websnippet.user_id
+			user: websnippet.user
 		});
 	
 		var user = Ti.UI.createLabel({
@@ -77,7 +77,7 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 			top:40,
 			height:20,
 			width:20,
-			id: comment.user.id
+			user: comment.user
 		});
 	
 		var user = Ti.UI.createLabel({
