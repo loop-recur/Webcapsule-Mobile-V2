@@ -40,7 +40,7 @@ Views.users.show = function(delegate, user) {
 		height:14,
 		width:18,
 		left:12,
-		top:107
+		top:90
 	});
 	
 	info_view.add(views_icon);
@@ -50,7 +50,7 @@ Views.users.show = function(delegate, user) {
 		height:14,
 		width:18,
 		left:65,
-		top:107
+		top:105
 	});
 	
 	info_view.add(following_icon);
@@ -60,51 +60,40 @@ Views.users.show = function(delegate, user) {
 		height:14,
 		width:18,
 		left:122,
-		top:137
+		top:120
 	});
 	
 	info_view.add(followers_icon);
 	
-	var views_icon = Ti.UI.createView({
-		backgroundImage:"images/capsule/webcap_stats_video_icon.png",
+	var webcapsules_icon = Ti.UI.createView({
+		backgroundImage:"images/capsule/webcap_stats_webcapsules_icon.png",
 		height:14,
 		width:18,
 		left:175,
-		top:137
+		top:135
 	});
 	
-	info_view.add(views_icon);
+	info_view.add(webcapsules_icon);
 	
 	var views_count = Ti.UI.createLabel({
 		text:user.view_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:33,
-		top:157,
+		top:90,
 		width:30,
 		height:21
 	});
 	
 	info_view.add(views_count);
 	
-	var webcapsule_count = Ti.UI.createLabel({
-		text:user.capsule_count,
-		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
-		color:page_text_color,
-		left:86,
-		top:157,
-		width:30,
-		height:21
-	});
-	
-	info_view.add(webcapsule_count);
 	
 	var followers_count = Ti.UI.createLabel({
 		text:user.view_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:33,
-		top:157,
+		top:105,
 		width:30,
 		height:21
 	});
@@ -115,13 +104,25 @@ Views.users.show = function(delegate, user) {
 		text:user.capsule_count,
 		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
 		color:page_text_color,
-		left:86,
-		top:157,
+		left:33,
+		top:120,
 		width:30,
 		height:21
 	});
 	
 	info_view.add(followees_count);
+	
+	var webcapsule_count = Ti.UI.createLabel({
+		text:user.capsule_count,
+		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+		color:page_text_color,
+		left:33,
+		top:135,
+		width:30,
+		height:21
+	});
+	
+	info_view.add(webcapsule_count);
 	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
@@ -136,8 +137,8 @@ Views.users.show = function(delegate, user) {
 	
 	delegate.getData(refreshTable, user.id);
 		
-	win.add(info_view);
 	win.add(tableView);
+	win.add(info_view);
 	
 	return win;
 }
