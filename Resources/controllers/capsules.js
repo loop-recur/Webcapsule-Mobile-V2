@@ -28,8 +28,10 @@ Controllers.capsules = (function() {
 		Nav.open(Gallery(self.getContents(e.source.capsule), e.source.index));
 	}
 	
-	self.pickerDone = function(cb, value) {
-		Api.all(cb, {feed_type : value.toLowerCase()});
+	self.tabClicked = function(cb, value, params, options) {
+		params = (params || {});
+		options = (options || {preload: true});
+		Api.all(cb, merge({feed_type : value.toLowerCase()}, params), options);
 	}
 	
 	self.addContent = defn(function(capsule, e) {

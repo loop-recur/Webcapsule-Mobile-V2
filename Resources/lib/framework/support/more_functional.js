@@ -26,10 +26,12 @@ log = function(s) {
 
 unshift = defn(function(xs, other) {
 	return other.concat(xs);
-})
+});
+
+flatten = reduce(function(a,b){return a.concat(b);}, []);
 
 cons = defn(function(xs, other) {
-	return [xs].concat(other);
+	return flatten([xs]).concat(flatten([other]));
 });
 
 repeat = defn(function(arg, n) {	
@@ -195,8 +197,6 @@ groupBy = defn(function(fun, xs) {
 argsToList = function(x){
 	return Array.prototype.slice.call(x);
 }
-
-flatten = reduce(function(a,b){return a.concat(b);}, []);
 
 capitalize = function(xs) {
 	return xs[0].toUpperCase() + xs.slice(1, xs.length);

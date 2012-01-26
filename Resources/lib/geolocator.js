@@ -2,7 +2,7 @@ Geolocator = (function() {
 	Ti.Geolocation.preferredProvider = "gps";
 	if (!isAndroid) { Ti.Geolocation.purpose = "Find location to nearby address for video";};
 
-servicesIsEnabled = function() {
+var servicesIsEnabled = function() {
 	if (!Ti.Geolocation.locationServicesEnabled) {
 		return false;
 	} else {
@@ -16,8 +16,23 @@ servicesIsEnabled = function() {
 	return true;
 }
 
+var _makeCoords = function(array) {
+	return {latitude: array[0], longitude: array[1]}
+}
 
-getCurrentAddress = function(cb) {
+var getCoordsForAddress = function(cb, address) {
+	if(!address) return;
+	var xhr = Ti.Network.createHTTPClient();
+	xhr.open('GET', 'http://maps.googleapis.com/maps/geo?output=json&q=' + address);
+	xhr.onload = function() {
+    var json = JSON.parse(this.responseText);
+		if(json.Status.code == 200) compose(cb, _makeCoords, pluck('coordinates'), pluck('Point'), first, pluck('Placemark'))(json);
+	};
+	xhr.send();
+}
+
+
+var getCurrentAddress = function(cb) {
 	var tries = 0;
 	
 	var locationCallback = function(e) {
@@ -60,7 +75,7 @@ getCurrentAddress = function(cb) {
 }
 
 	
-getCurrentCoordinates = function(callback) {
+var getCurrentCoordinates = function(callback) {
 	Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 	Ti.Geolocation.distanceFilter = 100;
 	
@@ -70,5 +85,9 @@ getCurrentCoordinates = function(callback) {
 	});
 }
 	
-	return {getCurrentCoordinates : getCurrentCoordinates, servicesIsEnabled : servicesIsEnabled, getCurrentAddress: getCurrentAddress}
+	return { getCurrentCoordinates : getCurrentCoordinates
+					, servicesIsEnabled : servicesIsEnabled
+					, getCurrentAddress: getCurrentAddress
+					, getCoordsForAddress: getCoordsForAddress
+				 }
 })();

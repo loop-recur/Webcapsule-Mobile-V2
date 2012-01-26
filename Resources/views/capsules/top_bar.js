@@ -1,4 +1,4 @@
-Views.capsules.top_bar = function(capsule) {
+Views.capsules.top_bar = function(capsule, delegate) {
 	var page_text_color = "#B1B2B4";
 	
 	var info_view = Ti.UI.createView({
@@ -18,17 +18,19 @@ Views.capsules.top_bar = function(capsule) {
 	
 	info_view.add(avatar);
 	
-	var name = Ti.UI.createLabel({
-		text:capsule.name, 
+	var name_field = Ti.UI.createTextField({
+		value:capsule.name, 
 		font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
 		color:page_text_color,
+		paddingLeft:5,
+		borderRadius:4,
 		left:80,
 		top:9,
 		height:60,
 		width:138
 	});
 	
-	info_view.add(name);
+	info_view.add(name_field);
 	
 	var share = Ti.UI.createButton({
 		backgroundImage:"images/capsule/webcap_share_btn.png",
@@ -221,5 +223,17 @@ Views.capsules.top_bar = function(capsule) {
 	});
 	
 	info_view.add(compress);
+	
+	name_field.addEventListener('return', function(){
+		capsule.name = name_field.value;
+		delegate.createCapsule(function(){ }, capsule);
+	});
+	
+	var setMap = function(coords) {
+		mapview.setLocation(coords);
+	}
+	
+	// Geolocator.getCoordsForAddress(setMap, capsule.where);
+	
 	return info_view;
 }

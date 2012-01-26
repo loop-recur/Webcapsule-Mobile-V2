@@ -2,7 +2,7 @@ LoopRecur.HttpClient = function() {
 	var current_client;
 	
 	function getClient() {
-		current_client = new HTTPClientWithCache({baseUrl: App.base_url, retryCount: 0, cacheSeconds: 0});
+		current_client = new HTTPClientWithCache({baseUrl: App.base_url, retryCount: 0, cacheSeconds: 10});
 		return current_client;
 	}
 		

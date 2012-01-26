@@ -1,5 +1,5 @@
 Gallery = function(contents, index) {
-	var current_view;
+	var current_view, changing;
 	
 	var win = Ti.UI.createWindow({
 		title: "Capsule",
@@ -9,16 +9,21 @@ Gallery = function(contents, index) {
 	
 	var showContent = function() {
 		var content = contents[index];
-		var next_view = Views[content.kind].show(content)
+		var next_view = Views[content.kind].show(content);
 		if(!current_view) {
 			win.add(next_view);
+			current_view = next_view;
 		} else {
-			current_view.animate({transition:Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT, view: next_view});
+			win.add(next_view);
+			win.remove(current_view);
 			current_view = next_view;
 		}
+		changing = false;
 	}
 	
 	win.addEventListener('swipe', function(e) {
+		if(changing) return;
+		changing = true;
 		if((e.direction == "left") && contents[index+1]) {
 			index += 1;
 		} else if((e.direction == "right") && contents[index-1]) {
