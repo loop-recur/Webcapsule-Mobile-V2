@@ -1,9 +1,5 @@
 Views.comments.show = function(comment) {
-	var win = Ti.UI.createWindow({
-		title: "Comments",
-		backgroundColor: "white",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
-	});
+	var win = Ti.UI.createView({});	
 	
 	var body = Ti.UI.createLabel({
 		text:comment.content, 

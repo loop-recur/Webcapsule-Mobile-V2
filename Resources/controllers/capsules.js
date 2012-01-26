@@ -23,8 +23,9 @@ Controllers.capsules = (function() {
 	self.getSingle = Api.find;
 	self.feed_options = ["Friends", "Mine", "Everybody", "Tagged"];
 	
-	self.showRowClicked = function(e) {
-		if(e.source.kind) Nav.open(Views[e.source.kind].show(e.source.content));
+	self.mosaicClicked = function(e) {
+		if(!e.source.index) return;
+		Nav.open(Gallery(self.getContents(e.source.capsule), e.source.index));
 	}
 	
 	self.pickerDone = function(cb, value) {
@@ -54,6 +55,10 @@ Controllers.capsules = (function() {
 	self.createCapsule = function(cb, capsule) {
 		Api.save(cb, capsule);
 	};
+	
+	self.getContents = function(capsule) {
+		return flatten([capsule.comments, capsule.photos, capsule.videos, capsule.websnippets]);
+	}
 	
 	return {index : index, show : show, update: update, create: create}
 })();

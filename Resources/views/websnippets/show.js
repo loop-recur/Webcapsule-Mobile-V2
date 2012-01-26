@@ -1,9 +1,5 @@
 Views.websnippets.show = function(websnippet) {
-	var win = Ti.UI.createWindow({
-		title: "Websnippets",
-		backgroundColor: "white",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
-	});
+	var win = Ti.UI.createView({});	
 	
 	var body = Ti.UI.createLabel({
 		text:websnippet.body, 

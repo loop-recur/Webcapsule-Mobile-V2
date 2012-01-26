@@ -5,6 +5,7 @@ FileList = [
 	, "helpers/user.js"
 	, "ui/ui.js"
 	, "ui/sub_tabs.js"
+	, "ui/gallery.js"
 	, "ui/button_group.js"
 	, "lib/file_cache.js"
 	, "lib/geolocator.js"

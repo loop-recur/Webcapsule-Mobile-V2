@@ -6,7 +6,7 @@ Views.capsules.show = function(delegate, id) {
 	});
 			
 	var finish = function(capsule) {
-		var mosaic = Views.capsules.mosaic(capsule, delegate.showRowClicked);
+		var mosaic = Views.capsules.mosaic(capsule, delegate);
 		win.add(mosaic);
 		var top_bar = Views.capsules.top_bar(capsule);
 		win.add(top_bar);

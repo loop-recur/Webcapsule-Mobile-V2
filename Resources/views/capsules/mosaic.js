@@ -1,5 +1,5 @@
-Views.capsules.mosaic = function(capsule, rowClicked) {	
-	var contents = flatten([capsule.comments, capsule.photos, capsule.videos, capsule.websnippets]);
+Views.capsules.mosaic = function(capsule, delegate) {	
+	var contents = delegate.getContents(capsule);
 	
 	var left_margin = 10;
 	var top_margin = 10;
@@ -117,32 +117,31 @@ Views.capsules.mosaic = function(capsule, rowClicked) {
 		if(content.kind == "videos") content_view = makeVideo(content);
 		if(content.kind == "websnippets") content_view = makeWebsnippet(content);
 		
+		content_view.index = contents.indexOf(content);
+		content_view.capsule = capsule;
 		content_view.top = top;
 		content_view.left = left;
-		content_view.id = content.id;
-		content_view.kind = content.kind;
-		content_view.content = content;
 		content_view.borderColor = "black";
 		content_view.borderWidth = 1;
 		content_view.borderRadius = 1;
-		content_view.width = 80;
-		content_view.height = 80;
+		content_view.width = 110;
+		content_view.height = 110;
 		
 
 		view.add(content_view);
 		
-		content_view.addEventListener('click', rowClicked);
+		content_view.addEventListener('click', delegate.mosaicClicked);
 	}
 	
 	var buildContent = function(position, content) {
-		var horizontal_spacing = 80
-		, vertical_spacing = 80
+		var horizontal_spacing = 110
+		, vertical_spacing = 110
 		, new_left = position.left + horizontal_spacing
 		, new_top = position.top;
 		
 		addContent(position.top, position.left, content);
 		
-		if(new_left > 400) {
+		if(new_left > 250) {
 			new_top = position.top + vertical_spacing;
 			new_left = 0;
 		}
