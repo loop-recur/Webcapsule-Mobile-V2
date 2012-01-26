@@ -205,14 +205,24 @@ Views.capsules.feedRow = function(capsule) {
 	});
 
 	row.add(views_count);
+	
+	var scroll_activity_view = Ti.UI.createScrollView({
+		top: 117,
+		left: 12,
+    backgroundColor: 'transparent',
+    height: 70,
+		width: 295,
+		contentWidth:"auto",
+		contentHeight:'auto',
+		showHorizontalScrollIndicator:true,
+		showVerticalScrollIndicator:false
+	})
 
 	var activity_content_view = Views.capsules[capsule.content_partial](capsule);
-	activity_content_view.top = 117;
-	activity_content_view.left = 12;
-	activity_content_view.width = 295;
 	activity_content_view.height = 70;
 
-	row.add(activity_content_view);
+	scroll_activity_view.add(activity_content_view);
+	row.add(scroll_activity_view);
 
 	var go_to_capsule = Ti.UI.createButton({
 		backgroundImage:"images/feed/webcap_feed_go_to_capsule_btn.png",
