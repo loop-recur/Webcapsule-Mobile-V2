@@ -5,7 +5,13 @@ Views.users.show = function(delegate, user) {
 		title: "User",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
 	});
-		
+	
+	var follow_button = Ti.UI.createButton({
+		width: 80,
+		height: 30,
+		right:10
+	});
+	
 	var info_view = Ti.UI.createView({
 		backgroundImage:"images/backgrounds/webcap_capsule_info_overlay.png",
 		top:0,
@@ -124,6 +130,8 @@ Views.users.show = function(delegate, user) {
 	
 	info_view.add(webcapsule_count);
 	
+	if(App.getCurrentUser().id != user.id) info_view.add(follow_button);
+	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
 		top:105,
@@ -134,6 +142,26 @@ Views.users.show = function(delegate, user) {
 	var refreshTable = function(data) {
 		tableView.setData(map(Views.capsules.feedRow, data));
 	}
+	
+	var isFollowing = function() {
+		return Controllers.followings.isFollowing(user.id);
+	}
+	
+	var updateButton = function() {		
+		follow_button.title = isFollowing() ? "Unfollow" : "Follow";
+	}
+	
+	var follow = function() {
+		var method = isFollowing() ? 'destroy' : 'create';
+		Controllers.followings[method](updateButton, {id: user.id});
+	}
+	
+	var setupButton = function() {
+		updateButton();
+		follow_button.addEventListener('click', follow);
+	}
+
+	setupButton();
 	
 	delegate.getData(refreshTable, user.id);
 		
