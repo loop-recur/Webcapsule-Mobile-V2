@@ -72,6 +72,7 @@ Views.capsules.index = function(delegate, win) {
 	}
 	
 	table.addEventListener('click', function(e) {
+		if(!e.source.id) return;
 		(e.rowData.id == "more") ? loadMore() : Controllers.capsules.show(e.source.id);
 	});
 		

@@ -8,7 +8,6 @@ Controllers.followings = (function() {
 	var all = Api.all;
 		
 	var create = function(cb, attrs) {
-		Ti.API.info("\n\n\n========create=======\n\n\n");
 		Api.save(_refreshUser.p(cb), attrs);
 	}
 	

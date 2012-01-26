@@ -40,7 +40,8 @@ Views.capsules.feedRow = function(capsule) {
 		left:88,
 		top:22,
 		height:19,
-		width:220
+		width:220,
+		id: capsule.id
 	});
 
 	row.add(added_new);
@@ -50,7 +51,8 @@ Views.capsules.feedRow = function(capsule) {
 		width:31,
 		height:23,
 		left:88,
-		top:38
+		top:38,
+		id: capsule.id
 	});
 
 	row.add(added_icon);
@@ -63,7 +65,8 @@ Views.capsules.feedRow = function(capsule) {
 		top:61,
 		height:17,
 		width:225,
-		textAlign:"right"
+		textAlign:"right",
+		id: capsule.id
 	});
 
 	row.add(name);
@@ -76,7 +79,8 @@ Views.capsules.feedRow = function(capsule) {
 		top:75,
 		height:17,
 		width:225,
-		textAlign:"right"
+		textAlign:"right",
+		id: capsule.id
 	});
 
 	row.add(capsule_creator);
@@ -100,7 +104,8 @@ Views.capsules.feedRow = function(capsule) {
 		top:93,
 		height:17,
 		width:225,
-		textAlign:"right"
+		textAlign:"right",
+		id: capsule.id
 	});
 
 	row.add(created);
@@ -110,7 +115,8 @@ Views.capsules.feedRow = function(capsule) {
 		height:14,
 		width:18,
 		left:22,
-		bottom:35
+		bottom:35,
+		id: capsule.id
 	});
 
 	row.add(video_icon);
@@ -120,7 +126,8 @@ Views.capsules.feedRow = function(capsule) {
 		height:14,
 		width:18,
 		left:65,
-		bottom:35
+		bottom:35,
+		id: capsule.id
 	});
 
 	row.add(photos_icon);
@@ -130,7 +137,8 @@ Views.capsules.feedRow = function(capsule) {
 		height:14,
 		width:18,
 		left:118,
-		bottom:35
+		bottom:35,
+		id: capsule.id
 	});
 
 	row.add(comments_icon);
@@ -140,7 +148,8 @@ Views.capsules.feedRow = function(capsule) {
 		height:14,
 		width:18,
 		left:168,
-		bottom:35
+		bottom:35,
+		id: capsule.id
 	});
 
 	row.add(views_icon);
@@ -152,7 +161,8 @@ Views.capsules.feedRow = function(capsule) {
 		left:41,
 		bottom:31,
 		width:30,
-		height:21
+		height:21,
+		id: capsule.id
 	});
 
 	row.add(video_count);
@@ -164,7 +174,8 @@ Views.capsules.feedRow = function(capsule) {
 		left:84,
 		bottom:31,
 		width:30,
-		height:21
+		height:21,
+		id: capsule.id
 	});
 
 	row.add(photo_count);
@@ -176,7 +187,8 @@ Views.capsules.feedRow = function(capsule) {
 		left:137,
 		bottom:31,
 		width:30,
-		height:21
+		height:21,
+		id: capsule.id
 	});
 
 	row.add(comment_count);
@@ -188,7 +200,8 @@ Views.capsules.feedRow = function(capsule) {
 		left:187,
 		bottom:31,
 		width:30,
-		height:21
+		height:21,
+		id: capsule.id
 	});
 
 	row.add(views_count);
