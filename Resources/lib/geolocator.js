@@ -17,7 +17,7 @@ var servicesIsEnabled = function() {
 }
 
 var _makeCoords = function(array) {
-	return {latitude: array[0], longitude: array[1]}
+	return {latitude: array[1], longitude: array[0]}
 }
 
 var getCoordsForAddress = function(cb, address) {
