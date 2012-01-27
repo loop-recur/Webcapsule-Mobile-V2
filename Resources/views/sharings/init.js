@@ -2,22 +2,32 @@ Views.sharings.init = function(capsule_id, delegate) {
 	var sharing = {message: "Check out this capsule!", capsule_id: capsule_id};
 	
 	var win = Ti.UI.createWindow({
-		width: 306,
-		height: 110,
+		width: 320,
+		height: 376,
 		modal: true,
 		modalTransitionStyle:Ti.UI.iPhone.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE,
 		modalStyle:Ti.UI.iPhone.MODAL_PRESENTATION_CURRENT_CONTEXT,
-		navBarHidden:true
+		navBarHidden:true,
+		backgroundImage:"images/share/webcap_share_modal_with_icons.png",
+		//barColor:'black'
 	});
 	
 	var twitter = getAuth('twitter');
 	var facebook = getAuth('facebook');
 		
 	var share_button = Ti.UI.createButton({
-		title: "share",
-  	right:5,
-    width:83,
-    height:49
+		backgroundImage:"images/share/webcap_share_modal_share_btn.png",
+		height:69,
+		width:320,
+		bottom:100
+	});
+	
+	var cancel_button = Ti.UI.createButton({
+		backgroundImage:"images/share/webcap_share_modal_cancel_btn.png",
+		width: 320,
+		height: 61,
+		bottom:40,
+		zIndex:30
 	});
 	
 	var finish = function() {
@@ -28,34 +38,37 @@ Views.sharings.init = function(capsule_id, delegate) {
 		delegate.create(finish, sharing);
 	});
 
-	var facebook_button = Ti.UI.createButton({
-		backgroundImage:"images/sharestory/fb_not_sharing.png",
-		height:41,
-		width:43,
-		left:50
+	// var facebook_button = Ti.UI.createButton({
+	// 	backgroundImage:"images/sharestory/fb_not_sharing.png",
+	// 	height:41,
+	// 	width:43,
+	// 	top: 50
+	// });
+	
+	var facebook_switch = Ti.UI.createSwitch({
+		value:false,
+		top: 85,
+		right: 90
 	});
 	
-	var twitter_button = Ti.UI.createButton({
-		backgroundImage:"images/sharestory/tw_not_sharing.png",
-		height:41,
-		width:43,
-		left:122
+	var twitter_switch = Ti.UI.createSwitch({
+		value:false,
+		top: 135,
+		right: 90
 	});
 	
-	var cancel_button = Ti.UI.createButton({
-		title:'X',
-		right:5,
-		top:3,
-		width: 25,
-		height: 25,
-		zIndex:30
-	});
-	
+	// var twitter_button = Ti.UI.createButton({
+	// 	backgroundImage:"images/sharestory/tw_not_sharing.png",
+	// 	height:41,
+	// 	width:43,
+	// 	top: 100
+	// });
+
 	cancel_button.addEventListener('click', finish);
 	
 	win.add(share_button);
-	win.add(facebook_button);
-	win.add(twitter_button);
+	win.add(facebook_switch);
+	win.add(twitter_switch);
 	win.add(cancel_button);
 	
 	win.open();

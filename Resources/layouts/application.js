@@ -1,7 +1,9 @@
 Nav = null;
 
 Layouts.application = function(delegate) {
-	var main = Ti.UI.createWindow();
+	var main = Ti.UI.createWindow({
+		//barColor:'black'
+	});
 	
 	var win = Ti.UI.createWindow({
 		title: "Feed",

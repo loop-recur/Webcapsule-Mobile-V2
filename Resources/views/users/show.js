@@ -3,19 +3,28 @@ Views.users.show = function(delegate, user) {
 	
 	var win = Ti.UI.createWindow({
 		title: "User",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+		//barColor:'black'
 	});
 	
 	var follow_button = Ti.UI.createButton({
-		width: 80,
-		height: 30,
-		right:10
+		width: 91,
+		left:80,
+		height: 23,
+		top: 50
 	});
 	
 	var info_view = Ti.UI.createView({
 		backgroundImage:"images/backgrounds/webcap_capsule_info_overlay.png",
 		top:0,
-		height:150
+		height:115
+	});
+	
+	var stats_view = Ti.UI.createView({
+		top:35,
+		right:10,
+		height:60,
+		width:130
 	});
 	
 	var avatar = UI.createAvatar({
@@ -31,110 +40,110 @@ Views.users.show = function(delegate, user) {
 	
 	var name = Ti.UI.createLabel({
 		text:user.full_name, 
-		font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
+		font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:80,
-		top:9,
-		height:60,
-		width:138
+		top:12,
+		height:20,
+		width:130
 	});
 	
 	info_view.add(name);
 	
 	var views_icon = Ti.UI.createView({
-		backgroundImage:"images/capsule/webcap_stats_views_icon.png",
-		height:14,
-		width:18,
-		left:12,
-		top:90
+		backgroundImage:"images/usershow/webcap_user_views_number.png",
+		height:12,
+		width:14,
+		left:0,
+		top:0
 	});
 	
-	info_view.add(views_icon);
+	stats_view.add(views_icon);
 	
 	var following_icon = Ti.UI.createView({
-		backgroundImage:"images/capsule/webcap_stats_webcapsule_icon.png",
-		height:14,
-		width:18,
-		left:65,
-		top:105
+		backgroundImage:"images/usershow/webcap_user_followers_number.png",
+		height:12,
+		width:14,
+		left:0,
+		top:15
 	});
 	
-	info_view.add(following_icon);
+	stats_view.add(following_icon);
 	
 	var followers_icon = Ti.UI.createView({
-		backgroundImage:"images/capsule/webcap_stats_followers_icon.png",
-		height:14,
-		width:18,
-		left:122,
-		top:120
+		backgroundImage:"images/usershow/webcap_user_following_number.png",
+		height:12,
+		width:14,
+		left:0,
+		bottom:15
 	});
 	
-	info_view.add(followers_icon);
+	stats_view.add(followers_icon);
 	
 	var webcapsules_icon = Ti.UI.createView({
-		backgroundImage:"images/capsule/webcap_stats_webcapsules_icon.png",
-		height:14,
-		width:18,
-		left:175,
-		top:135
+		backgroundImage:"images/usershow/webcap_user_wc_number.png",
+		height:12,
+		width:14,
+		left:0,
+		bottom:0
 	});
 	
-	info_view.add(webcapsules_icon);
+	stats_view.add(webcapsules_icon);
 	
 	var views_count = Ti.UI.createLabel({
-		text:user.view_count,
-		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+		text:"views " + user.view_count,
+		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
-		left:33,
-		top:90,
-		width:30,
-		height:21
+		left:18,
+		top:0,
+		width:"auto",
+		height:12
 	});
 	
-	info_view.add(views_count);
+	stats_view.add(views_count);
 	
 	
 	var followers_count = Ti.UI.createLabel({
-		text:user.view_count,
-		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+		text:"followers: " + user.view_count,
+		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
-		left:33,
-		top:105,
-		width:30,
-		height:21
+		left:18,
+		top:15,
+		width:"auto",
+		height:12
 	});
 	
-	info_view.add(followers_count);
+	stats_view.add(followers_count);
 	
 	var followees_count = Ti.UI.createLabel({
-		text:user.capsule_count,
-		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+		text:"following: " + user.capsule_count,
+		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
-		left:33,
-		top:120,
-		width:30,
-		height:21
+		left:18,
+		bottom:15,
+		width:"auto",
+		height:12
 	});
 	
-	info_view.add(followees_count);
+	stats_view.add(followees_count);
 	
 	var webcapsule_count = Ti.UI.createLabel({
-		text:user.capsule_count,
-		font:{fontFamily:'GillSans',fontSize:"14dp",fontWeight:'regular'},
+		text:"webcapsules: " + user.capsule_count,
+		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
-		left:33,
-		top:135,
-		width:30,
-		height:21
+		left:18,
+		bottom:0,
+		width:"auto",
+		height:12
 	});
 	
-	info_view.add(webcapsule_count);
+	stats_view.add(webcapsule_count);
 	
 	if(App.getCurrentUser().id != user.id) info_view.add(follow_button);
 	
 	var tableView = Ti.UI.createTableView({
 		backgroundColor:"transparent",
-		top:105,
+		top:120,
 		bottom:0,
 		separatorColor:'transparent'
 	});
@@ -148,7 +157,8 @@ Views.users.show = function(delegate, user) {
 	}
 	
 	var updateButton = function() {		
-		follow_button.title = isFollowing() ? "Unfollow" : "Follow";
+		// follow_button.title = isFollowing() ? "Unfollow" : "Follow";
+		follow_button.backgroundImage = isFollowing() ? "images/usershow/webcap_user_unfollow_btn.png" : "images/usershow/webcap_user_follow_btn.png";
 	}
 	
 	var follow = function() {
@@ -166,6 +176,7 @@ Views.users.show = function(delegate, user) {
 	delegate.getData(refreshTable, user.id);
 		
 	win.add(tableView);
+	info_view.add(stats_view);
 	win.add(info_view);
 	
 	return win;

@@ -1,12 +1,14 @@
 Views.comments.show = function(comment) {
-	var win = Ti.UI.createView({});	
+	var win = Ti.UI.createView({
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+	});	
 	
 	var body = Ti.UI.createLabel({
 		text:comment.content, 
 		font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
 		color:"#444444",
 		left:10,
-		top:100,
+		top:120,
 		height:"auto",
 		width:"auto"
 	});
@@ -24,7 +26,7 @@ Views.comments.show = function(comment) {
 		text: "By " +comment.user.full_name, 
 		font:{fontFamily:'GillSans-Light',fontSize:"18dp",fontWeight:'regular'},
 		color:"#333333",
-		left:80,
+		left:100,
 		top:45,
 		height:"auto",
 		width:"auto"

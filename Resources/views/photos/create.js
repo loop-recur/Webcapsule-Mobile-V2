@@ -3,7 +3,8 @@ Views.photos.create = function(delegate, capsule) {
 	var win = Ti.UI.createWindow({
 		title: "Add Photo",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
 	
 	var placeholder = Ti.UI.createView({
@@ -58,16 +59,16 @@ Views.photos.create = function(delegate, capsule) {
 	}
 
 	var choose_photo = Ti.UI.createButton({
-		title:"Choose Photo",
-		width: 250,
-		height:40,
-		top:270
+		backgroundImage:"images/addnew/webcap_add_photo_choose_btn.png",
+		width: 320,
+		height:71,
+		top:250
 	});
 
 	var take_photo = Ti.UI.createButton({
-		title:"Take Photo",
-		width: 250,
-		height:40,
+		backgroundImage:"images/addnew/webcap_add_photo_take_btn.png",
+		width: 320,
+		height:71,
 		top:320
 	});
 	

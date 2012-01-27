@@ -2,7 +2,8 @@ Views.capsules.show = function(delegate, id) {
 	var win = Ti.UI.createWindow({
 		title: "Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
 			
 	var finish = function(capsule) {

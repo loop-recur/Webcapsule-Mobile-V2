@@ -4,7 +4,8 @@ Gallery = function(contents, index) {
 	var win = Ti.UI.createWindow({
 		title: "Capsule",
 		backgroundColor: "white",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT],
+		//barColor:'black'
 	});
 	
 	var showContent = function() {

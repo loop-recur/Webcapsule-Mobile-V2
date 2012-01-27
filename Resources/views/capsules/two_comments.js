@@ -7,9 +7,9 @@ Views.capsules.two_comments = function(capsule) {
 		var left_padding = old_left+30;
 		
 		var comment_view = Ti.UI.createView({
-			backgroundColor:"#8E9DA4",
-			width:90,
-			height:68
+			backgroundImage:"images/usershow/webcap_comment_thumbnail_4across.png",
+			width:81,
+			height:81
 		});
 	
 		var body = Ti.UI.createLabel({
@@ -17,36 +17,24 @@ Views.capsules.two_comments = function(capsule) {
 			font:{fontFamily:'GillSans',fontSize:"11dp",fontWeight:'regular'},
 			color:"#444444",
 			left:left_padding+10,
-			top:10,
-			left:10, 
-			height:"auto",
-			width:"auto"
+			top:3,
+			left:12, 
+			height:35,
+			width:55
 		});
 	
 		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(comment.user.image), 
 			left:left_padding+5,
-			top:40,
-			left:10,
+			top:42,
+			right:10,
 			height:20,
 			width:20,
 			user: comment.user
 		});
-	
-		var user = Ti.UI.createLabel({
-			text: "By " +comment.user.full_name, 
-			font:{fontFamily:'GillSans-Light',fontSize:"11dp",fontWeight:'regular'},
-			color:"#333333",
-			left:left_padding+20,
-			top:45,
-			right:5,
-			height:"auto",
-			width:"auto"
-		});
 		
 		comment_view.add(body);
 		comment_view.add(avatar);
-		comment_view.add(user);
 		view.add(comment_view);
 		return left_padding;
 	}

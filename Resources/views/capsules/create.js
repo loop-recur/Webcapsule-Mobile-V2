@@ -5,7 +5,8 @@ Views.capsules.create = function(delegate) {
 	var win = Ti.UI.createWindow({
 		title: "Create Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
 	
 	var view = Ti.UI.createView({
@@ -100,7 +101,7 @@ Views.capsules.create = function(delegate) {
 		text:'Private:',
 		font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
 		color:page_text_color,
-		width:55,
+		width:"auto",
 		height:24,
 		top:91
 	});

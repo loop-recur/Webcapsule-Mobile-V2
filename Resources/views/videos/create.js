@@ -1,7 +1,8 @@
 Views.videos.create = function(delegate, capsule) {	
 	var win = Ti.UI.createWindow({
 		title: "Add Video",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png"
+		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+		//barColor:'black'
 	});
 	
 	var placeholder = Ti.UI.createView({
@@ -67,16 +68,16 @@ Views.videos.create = function(delegate, capsule) {
 	
 	
 	var choose_video = Ti.UI.createButton({
-		title:"Choose Video",
-		width: 250,
-		height:40,
-		top:270
+		backgroundImage:"images/addnew/webcap_add_video_choose_btn.png",
+		width: 320,
+		height:71,
+		top:250
 	});
 
 	var take_video = Ti.UI.createButton({
-		title:"Take Video",
-		width: 250,
-		height:40,
+		backgroundImage:"images/addnew/webcap_add_video_take_btn.png",
+		width: 320,
+		height:71,
 		top:320
 	});
 	

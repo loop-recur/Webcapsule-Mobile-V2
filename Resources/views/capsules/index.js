@@ -25,7 +25,6 @@ Views.capsules.index = function(delegate, win) {
 			fontSize:18,
 			fontWeight:'bold'
 		},
-		left:100,
 		top:30,
 		height:20,
 		width:190,

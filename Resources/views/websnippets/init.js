@@ -6,12 +6,12 @@ Views.websnippets.init = function(delegate, capsule_id) {
 	
 	var win = Ti.UI.createWindow({
 		title: "Add Websnippets",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		backgroundImage:"images/backgrounds/webcap_snippet_feed_bg.png",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
-	
+
 	var activity = Ti.UI.createActivityIndicator({
-		top:100, 
 		height:100,
 		width:100,
 		zIndex: 20
@@ -29,18 +29,20 @@ Views.websnippets.init = function(delegate, capsule_id) {
 		
 		var name = Ti.UI.createLabel({
 			text: snippet, 
-			font:{fontFamily:'GillSans-Light',fontSize:"18dp",fontWeight:'regular'},
+			font:{fontFamily:'GillSans-Light',fontSize:"16dp",fontWeight:'regular'},
 			color:"#333333",
 			height:"auto",
-			width:"auto",
+			width:265,
+			left:15,
 			snippet: snippet,
 			checkbox: checkbox
 		});
 		
 		var row = Ti.UI.createTableViewRow({
-			backgroundColor: "white",
+			backgroundColor: "transparent",
 			snippet: snippet,
-			checkbox: checkbox
+			checkbox: checkbox,
+			height:name.height + 15
 		});
 		
 		row.add(name);

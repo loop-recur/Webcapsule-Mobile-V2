@@ -1,7 +1,8 @@
 Views.accounts.init = function(delegate) {	
 	var win = Ti.UI.createWindow({
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
 
 	var full_name = Ti.UI.createTextField({  

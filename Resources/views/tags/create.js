@@ -5,7 +5,8 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	var win = Ti.UI.createWindow({
 		title: "Add Tags",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		//barColor:'black'
 	});
 	
 	var activity = Ti.UI.createActivityIndicator({
@@ -17,7 +18,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	activity.show();
 	
 	var search = Ti.UI.createSearchBar({
-		barColor:'black',
+		//barColor:'black',
 		showCancel:true,
 		hintText:'Enter a twitter, facebook or username...',
 		height:40,

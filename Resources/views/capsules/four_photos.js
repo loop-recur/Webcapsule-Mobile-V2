@@ -1,6 +1,6 @@
 Views.capsules.four_photos = function(capsule) {
 	var view = Ti.UI.createScrollView({
-		width:320,
+		width:290,
 		contentWidth:"auto",
 		contentHeight:'auto',
 		showHorizontalScrollIndicator:true,

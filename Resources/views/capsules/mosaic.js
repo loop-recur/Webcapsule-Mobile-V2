@@ -18,81 +18,61 @@ Views.capsules.mosaic = function(capsule, delegate) {
 	
 	var makeWebsnippet = function(websnippet) {
 		var websnippet_view = Ti.UI.createView({
-			backgroundColor:"transparent",
+			backgroundImage:"images/usershow/webcap_comment_thumbnail.png",
+			height:110,
+			width:110
 		});
-	
+		
 		var body = Ti.UI.createLabel({
 			text:websnippet.body, 
 			font:{fontFamily:'GillSans',fontSize:"11dp",fontWeight:'regular'},
 			color:"#444444",
-			left:10,
 			top:10,
-			height:"auto",
-			width:"auto"
+			height:56,
+			width:76
 		});
 	
 		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(websnippet.user.image), 
-			left:5,
-			top:40,
+			right:17,
+			bottom:22,
 			height:20,
 			width:20,
 			user: websnippet.user
 		});
-	
-		var user = Ti.UI.createLabel({
-			text: "By " +websnippet.user.full_name, 
-			font:{fontFamily:'GillSans-Light',fontSize:"11dp",fontWeight:'regular'},
-			color:"#333333",
-			left:20,
-			top:45,
-			height:"auto",
-			width:"auto"
-		});
-		
+
 		websnippet_view.add(body);
 		websnippet_view.add(avatar);
-		websnippet_view.add(user);
 		return websnippet_view;
 	}
 	
 	var makeComment = function(comment) {
 		var comment_view = Ti.UI.createView({
-			backgroundColor:"transparent",
+			backgroundImage:"images/usershow/webcap_comment_thumbnail.png",
+			height:110,
+			width:110
 		});
 	
 		var body = Ti.UI.createLabel({
 			text:comment.content, 
 			font:{fontFamily:'GillSans',fontSize:"11dp",fontWeight:'regular'},
 			color:"#444444",
-			left:10,
 			top:10,
-			height:"auto",
-			width:"auto"
+			height:56,
+			width:76
 		});
 	
 		var avatar = UI.createAvatar({
 			image: Helpers.Application.assetPath(comment.user.image), 
-			left:5,
-			top:40,
+			right:17,
+			bottom:22,
 			height:20,
 			width:20,
 			user: comment.user
 		});
-	
-		var user = Ti.UI.createLabel({
-			text: "By " +comment.user.full_name, 
-			font:{fontFamily:'GillSans-Light',fontSize:"11dp",fontWeight:'regular'},
-			color:"#333333",
-			left:20,
-			top:45,
-			height:"auto",
-			width:"auto"
-		});
 		
 		comment_view.add(body);
 		comment_view.add(avatar);
-		comment_view.add(user);
 		return comment_view;
 	}
 	
@@ -100,7 +80,8 @@ Views.capsules.mosaic = function(capsule, delegate) {
 		return image_view = Ti.UI.createImageView({
 			image:Helpers.Application.assetPath(video.screenshot),
 			width: 'auto',
-			height: 'auto'
+			height: 'auto',
+			backgroundColor:"#757171"
 		});
 	}
 	
@@ -121,7 +102,7 @@ Views.capsules.mosaic = function(capsule, delegate) {
 		content_view.capsule = capsule;
 		content_view.top = top;
 		content_view.left = left;
-		content_view.borderColor = "black";
+		content_view.borderColor = "transparent";
 		content_view.borderWidth = 1;
 		content_view.borderRadius = 1;
 		content_view.width = 110;

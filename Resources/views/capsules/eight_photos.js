@@ -1,7 +1,7 @@
 Views.capsules.eight_photos = function(capsule) {
 	var view = Ti.UI.createScrollView({
 		backgroundColor: "transparent",
-		width:100,
+		width:290,
 		contentWidth:"auto",
 		contentHeight:70,
 		showHorizontalScrollIndicator:true,
