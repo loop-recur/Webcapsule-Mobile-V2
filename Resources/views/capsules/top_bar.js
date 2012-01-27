@@ -18,19 +18,38 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	
 	info_view.add(avatar);
 	
-	var name_field = Ti.UI.createTextField({
-		value:capsule.name, 
-		font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
-		color:page_text_color,
-		paddingLeft:5,
-		borderRadius:4,
-		left:80,
-		top:9,
-		height:60,
-		width:138
-	});
-	
-	info_view.add(name_field);
+	if(App.getCurrentUser().id == capsule.user_id) {
+		var name_field = Ti.UI.createTextField({
+			value:capsule.name, 
+			font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
+			color:page_text_color,
+			paddingLeft:5,
+			borderRadius:4,
+			left:80,
+			top:9,
+			height:60,
+			width:138
+		});
+		
+		name_field.addEventListener('return', function(){
+			capsule.name = name_field.value;
+			delegate.createCapsule(function(){}, capsule);
+		});
+
+		info_view.add(name_field);
+	} else {
+		var name = Ti.UI.createLabel({
+			text:capsule.name, 
+			font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
+			color:page_text_color,
+			left:80,
+			top:9,
+			height:60,
+			width:138
+		});
+
+		info_view.add(name);
+	}
 	
 	var share = Ti.UI.createButton({
 		backgroundImage:"images/capsule/webcap_share_btn.png",
@@ -224,10 +243,6 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	
 	info_view.add(compress);
 	
-	name_field.addEventListener('return', function(){
-		capsule.name = name_field.value;
-		delegate.createCapsule(function(){ }, capsule);
-	});
 	
 	var setMap = function(coords) {
 		mapview.setLocation(coords);
