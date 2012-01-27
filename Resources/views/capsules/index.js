@@ -41,6 +41,10 @@ Views.capsules.index = function(delegate, win) {
 		if(can_load_more) xs = cons(xs, load_more_row);
 		table.setData(xs);
 	}
+	
+	var loadDataForTable = function(cb) {
+		delegate.tabClicked(function(d){ refreshTable(d); cb(); }, current_tab);
+	}
 
 	var new_capsule = Ti.UI.createButton({
 		title: "New Capsule",
@@ -59,9 +63,11 @@ Views.capsules.index = function(delegate, win) {
 		getContent : function(view, e) {
 			if(current_tab == e.source.id) return;
 			current_tab = e.source.id;
-			delegate.tabClicked(function(d){ refreshTable(d);}, e.source.id)
+			loadDataForTable(e);
 		}
 	}
+	
+	UI.enablePullToRefresh(table, loadDataForTable);
 	
 	var loadMore = function() {
 		page += 1;
