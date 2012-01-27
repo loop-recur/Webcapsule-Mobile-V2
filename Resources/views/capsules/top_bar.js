@@ -243,12 +243,11 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	
 	info_view.add(compress);
 	
-	
 	var setMap = function(coords) {
-		mapview.setLocation(coords);
+		mapview.setLocation(merge(coords, {animate:true,latitudeDelta:0.04, longitudeDelta:0.04}));
 	}
 	
-	// Geolocator.getCoordsForAddress(setMap, capsule.where);
+	Geolocator.getCoordsForAddress(setMap, capsule.where);
 	
 	return info_view;
 }

@@ -103,18 +103,10 @@ UI.enablePullToRefresh = function(tableView, beginLoading) {
     };
 
     tableView.addEventListener('scroll', function(e) {
-				log("Scroll");
-				log(e.source);
         if (e.source === tableView) {
-					log("EQUALLED");
             var offset = e.contentOffset.y;
             //Ti.API.info("scroll y offset = "+offset + " dragging = "+e.dragging + " loading="+loading);
-							log(e);
-							log(loading);
             if (!loading) {
-							log("in it");
-							log(pulling);
-							log(offset);
 							var t;
                 if (!pulling && offset <= -65.0) {
                     pulling = true;
