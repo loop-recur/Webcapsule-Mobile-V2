@@ -8,6 +8,19 @@ UI.createAvatar = function(attrs) {
 	return image;
 }
 
+UI.feedButton = function(win) {
+	var feed = Ti.UI.createButton({
+		title: "Feed",
+		width: 'auto',
+		height: 'auto'
+	});
+
+	feed.addEventListener('click', function(e) {
+		Nav.close(win);
+	});
+	
+	win.setLeftNavButton(feed);
+}
 
 UI.enablePullToRefresh = function(tableView, beginLoading) {
     var border = Ti.UI.createView({

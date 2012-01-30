@@ -52,7 +52,7 @@ Views.comments.create = function(delegate, capsule) {
 	
 	finish = function(){
 		alert("Comment added!");
-		Controllers.capsules.show(capsule.id);
+		Controllers.capsules.show(capsule.id, true);
 	}
 	
 	return win;

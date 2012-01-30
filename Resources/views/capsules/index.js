@@ -42,7 +42,7 @@ Views.capsules.index = function(delegate, win) {
 	}
 	
 	var loadDataForTable = function(cb) {
-		delegate.tabClicked(function(d){ refreshTable(d); cb(); }, current_tab);
+		delegate.tabClicked(function(d){ refreshTable(d); if(cb) cb(); }, current_tab);
 	}
 
 	var new_capsule = Ti.UI.createButton({
@@ -62,7 +62,7 @@ Views.capsules.index = function(delegate, win) {
 		getContent : function(view, e) {
 			if(current_tab == e.source.id) return;
 			current_tab = e.source.id;
-			loadDataForTable(e);
+			loadDataForTable();
 		}
 	}
 	

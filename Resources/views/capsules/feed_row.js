@@ -232,12 +232,6 @@ Views.capsules.feedRow = function(capsule) {
 		bottom:25,
 		id: capsule.id
 	});
-	
-	var tableClicked = function(e) {
-		if(e.source.id) Controllers.capsules.show(e.source.id);
-	}
-
-	go_to_capsule.addEventListener('click', tableClicked);
 
 	row.add(go_to_capsule);
 

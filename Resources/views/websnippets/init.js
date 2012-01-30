@@ -92,7 +92,7 @@ Views.websnippets.init = function(delegate, capsule_id) {
 	
 	var finish = function(snippets) {
 		alert("Websnippet added!");
-		Controllers.capsules.show(capsule_id);
+		Controllers.capsules.show(capsule_id, true);
 	}
 	
 	var create = function(snippets) {

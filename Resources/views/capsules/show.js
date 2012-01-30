@@ -5,13 +5,6 @@ Views.capsules.show = function(delegate, id) {
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
 		//barColor:'black'
 	});
-	
-	var feed = Ti.UI.createButton({
-		title: "Feed",
-		width: 'auto',
-		height: 'auto'
-	});
-	win.setLeftNavButton(feed);
 			
 	var finish = function(capsule) {
 		var mosaic = Views.capsules.mosaic(capsule, delegate);
@@ -33,15 +26,7 @@ Views.capsules.show = function(delegate, id) {
 		win.setRightNavButton(add_to_capsule);
 	}
 	
-	feed.addEventListener('click', function(e) {
-		var feed_win = Ti.UI.createWindow({
-			title: "Feed",
-			backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-			navBarHidden:false
-		});
-		Nav.open(Controllers.capsules.index(feed_win));
-	});
-	
+	UI.feedButton(win);
 	
 	delegate.getSingle(finish, {id: id}, {preload: true});
 

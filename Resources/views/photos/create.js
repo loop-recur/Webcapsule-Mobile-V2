@@ -27,7 +27,7 @@ Views.photos.create = function(delegate, capsule) {
 	
 	var finish = function() {
 		alert("Photo added!");
-		Controllers.capsules.show(capsule.id);
+		Controllers.capsules.show(capsule.id, true);
 	}
 	
 	var save = function(event) {

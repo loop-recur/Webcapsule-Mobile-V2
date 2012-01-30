@@ -25,7 +25,7 @@ Views.videos.create = function(delegate, capsule) {
 	
 	var finish = function() {
 		alert("Video added!");
-		Controllers.capsules.show(capsule.id);
+		Controllers.capsules.show(capsule.id, true);
 	}
 	
 	var save = function(e) {
