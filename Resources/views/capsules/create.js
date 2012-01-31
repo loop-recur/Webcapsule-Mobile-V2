@@ -43,15 +43,15 @@ Views.capsules.create = function(delegate) {
 	view.add(name);
 	
 	var when = Ti.UI.createTextField({
-    width:150,  
-    height:18, 
+    width:150,
+    height:18,
 		color:page_text_color,
 		font:{fontFamily:'GillSans-Light',fontSize:"16dp",fontWeight:'regular'},
     value:Date.today().toString('M/d/yy'),
     returnKeyType:Ti.UI.RETURNKEY_NEXT,
 		top:73,
 		left:13,
-	});	
+	});
 	
 	view.add(when);
 	
