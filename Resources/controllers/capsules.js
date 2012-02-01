@@ -2,10 +2,6 @@ Controllers.capsules = (function() {
 	var Api = RestApi("capsules")
 	, self = {};
 	
-	var _resetNav = function() {
-		Main.fireEvent('reset');
-	}
-	
 	var index = function(win) {
 		return Views.capsules.index(self, win);
 	};
@@ -15,8 +11,8 @@ Controllers.capsules = (function() {
 	};
 	
 	var show = function(id, reset) {
-		if(reset) _resetNav();
-		Nav.open(Views.capsules.show(self, id));
+		var win = Views.capsules.show(self, id);
+		reset ? Main.resetNav(win) : Nav.open(win);
 	};
 
 	var update = function(capsule) {

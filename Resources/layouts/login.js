@@ -28,7 +28,7 @@ Layouts.login = function(delegate) {
     width:260,  
     height:56, 
     hintText:'Email', 
-		font:{fontFamily:'GillSans',fontSize:"15dp",fontWeight:'regular'}, 
+		font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'}, 
     keyboardType:Ti.UI.KEYBOARD_EMAIL,  
     returnKeyType:Ti.UI.RETURNKEY_NEXT,
 		top:135
@@ -47,7 +47,7 @@ Layouts.login = function(delegate) {
 		paddingLeft:15,
 		paddingBottom:5,  
     hintText:'Password',
-		font:{fontFamily:'GillSans',fontSize:"15dp",fontWeight:'regular'},
+		font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'},
     passwordMask:true,
     keyboardType:Ti.UI.KEYBOARD_DEFAULT,
     returnKeyType:Ti.UI.RETURNKEY_GO,

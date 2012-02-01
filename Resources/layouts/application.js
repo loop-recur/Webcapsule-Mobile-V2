@@ -1,5 +1,4 @@
 Main = null;
-win = null;
 Nav = null;
 
 Layouts.application = function(delegate) {
@@ -13,18 +12,16 @@ Layouts.application = function(delegate) {
 	});
 	
 	var createNav = function() {
-		Nav = Ti.UI.iPhone.createNavigationGroup({
-		  window:win
-		});
-		
+		Nav = Ti.UI.iPhone.createNavigationGroup({ window:win });		
 		Main.add(Nav);
 	}
 	
-	Main.addEventListener('reset', function() {
+	Main.resetNav = function(w) {
 		Nav.close();
 		Main.remove(Nav);
 		createNav();
-	});
+		setTimeout(function() { Nav.open(w); }, 200);
+	}
 	
 	createNav();
 
