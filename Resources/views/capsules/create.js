@@ -97,6 +97,45 @@ Views.capsules.create = function(delegate) {
 	
 	seal_area.add(seal_optional);
 	
+	var picker_view = Ti.UI.createView({
+		height: 251,
+		bottom: -251,
+		zIndex:99
+	});
+	
+	var cancel =  Ti.UI.createButton({
+		title:'Cancel',
+		style:Ti.UI.iPhone.SystemButtonStyle.BORDERED
+	});
+
+	var done =  Ti.UI.createButton({
+		title:'Done',
+		style:Ti.UI.iPhone.SystemButtonStyle.DONE
+	});
+
+	var spacer =  Ti.UI.createButton({
+		systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+	});
+
+	var toolbar =  Ti.UI.createToolbar({
+		top:0,
+		items:[cancel,spacer,done]
+	});
+
+	picker_view.add(toolbar);
+	
+	var picker = Ti.UI.createPicker({
+		type:Ti.UI.PICKER_TYPE_DATE,
+		minDate:Date.today(),
+		value:Date.today(),
+		top:43,
+		selectionIndicator:true,
+		zIndex:99
+	});
+	
+	picker_view.add(picker);
+	win.add(picker_view);
+
 	var access_label = Ti.UI.createLabel({
 		text:'Private:',
 		font:{fontFamily:'GillSans-Light',fontSize:"15dp",fontWeight:'regular'},
@@ -144,7 +183,7 @@ Views.capsules.create = function(delegate) {
 	
 	tag_area.add(tag_date);
 	
-	
+
 	var where = Ti.UI.createTextField({
 		font:{fontFamily:'GillSans-Light',fontSize:"16dp",fontWeight:'regular'},
 		color:page_text_color,
@@ -183,9 +222,30 @@ Views.capsules.create = function(delegate) {
 	win.add(add_memories_label);
 	
 	
-	finish = function(capsule) {
+	var finish = function(capsule) {
 		Controllers.capsules.show(capsule.id);
 	}
+	
+	var setSealDate = function() {
+		seal_date.value = picker.value;
+	}
+	
+	var showPicker = function() {
+		picker_view.animate({ bottom: 0});
+	}
+	
+	picker.addEventListener('change',setSealDate);
+	
+	done.addEventListener('click',function() {
+		setSealDate();
+		picker_view.animate({bottom: -251});
+	});
+	
+	cancel.addEventListener('click',function() {
+		picker_view.animate({bottom: -251});
+	});
+
+	seal_area.addEventListener('click', showPicker);
 	
 	if(Geolocator.servicesIsEnabled()) {
 		Geolocator.getCurrentAddress(function(currentAddress) {
@@ -195,12 +255,10 @@ Views.capsules.create = function(delegate) {
 		where.hintText = "No geolocation enabled, please type in address";
 	}
 
-	
-
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
 		var access = access_switch.value ? "private" : "public";
-		delegate.createCapsule(finish, {name : name.value, access: access, when : new Date(), where: where.value});
+		delegate.createCapsule(finish, {name : name.value, access: access, when : new Date(), where: where.value, seal_close: seal_date.value});
 	});
 
 
