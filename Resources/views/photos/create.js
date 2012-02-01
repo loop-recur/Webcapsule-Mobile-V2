@@ -4,7 +4,7 @@ Views.photos.create = function(delegate, capsule) {
 		title: "Add Photo",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var placeholder = Ti.UI.createView({

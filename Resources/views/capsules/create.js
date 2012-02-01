@@ -6,7 +6,7 @@ Views.capsules.create = function(delegate) {
 		title: "Create Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var view = Ti.UI.createView({
@@ -254,8 +254,6 @@ Views.capsules.create = function(delegate) {
 	} else {
 		where.hintText = "No geolocation enabled, please type in address";
 	}
-
-<<<<<<< HEAD
 	
 	var mapview = Ti.Map.createView({
 		mapType: Ti.Map.STANDARD_TYPE,
@@ -277,9 +275,6 @@ Views.capsules.create = function(delegate) {
 	}
 	
 	Geolocator.getCurrentCoordinates(setMap);
-
-=======
->>>>>>> 509a31e8e08b00a7376e2b482034364a59541bab
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
 		var access = access_switch.value ? "private" : "public";

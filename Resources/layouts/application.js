@@ -8,7 +8,8 @@ Layouts.application = function(delegate) {
 		title: "Feed",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
 		navBarHidden:false,
-		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
+		barColor:"black"
 	});
 	
 	var createNav = function() {

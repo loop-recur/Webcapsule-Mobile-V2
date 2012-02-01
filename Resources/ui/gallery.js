@@ -5,7 +5,7 @@ Gallery = function(contents, index) {
 		title: "Capsule",
 		backgroundColor: "white",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT],
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var showContent = function() {

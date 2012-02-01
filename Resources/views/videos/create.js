@@ -2,7 +2,7 @@ Views.videos.create = function(delegate, capsule) {
 	var win = Ti.UI.createWindow({
 		title: "Add Video",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var placeholder = Ti.UI.createView({

@@ -9,7 +9,7 @@ Views.sharings.init = function(capsule_id, delegate) {
 		modalStyle:Ti.UI.iPhone.MODAL_PRESENTATION_CURRENT_CONTEXT,
 		navBarHidden:true,
 		backgroundImage:"images/share/webcap_share_modal_with_icons.png",
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var twitter = getAuth('twitter');
@@ -30,18 +30,6 @@ Views.sharings.init = function(capsule_id, delegate) {
 		zIndex:30
 	});
 	
-	var facebook_switch = Ti.UI.createSwitch({
-		value:false,
-		top: 87,
-		right: 90
-	});
-	
-	var twitter_switch = Ti.UI.createSwitch({
-		value:false,
-		top: 137,
-		right: 90
-	});
-	
 	var finish = function() {
 		win.close();
 	}
@@ -49,6 +37,32 @@ Views.sharings.init = function(capsule_id, delegate) {
 	share_button.addEventListener('click', function() {
 		delegate.create(finish, sharing);
 	});
+
+	// var facebook_button = Ti.UI.createButton({
+	// 	backgroundImage:"images/sharestory/fb_not_sharing.png",
+	// 	height:41,
+	// 	width:43,
+	// 	top: 50
+	// });
+	
+	var facebook_switch = Ti.UI.createSwitch({
+		value:false,
+		top: 85,
+		right: 90
+	});
+	
+	var twitter_switch = Ti.UI.createSwitch({
+		value:false,
+		top: 135,
+		right: 90
+	});
+	
+	// var twitter_button = Ti.UI.createButton({
+	// 	backgroundImage:"images/sharestory/tw_not_sharing.png",
+	// 	height:41,
+	// 	width:43,
+	// 	top: 100
+	// });
 
 	cancel_button.addEventListener('click', finish);
 	
@@ -62,20 +76,32 @@ Views.sharings.init = function(capsule_id, delegate) {
 	if(facebook) toggleFacebook();
 	if(twitter) toggleTwitter();
 	
-	facebook_switch.addEventListener('change', function(e) {
-		facebook ? toggleFacebook(e.value) : connectFacebook(e.value);
+	facebook_button.addEventListener('click', function() {
+		facebook ? toggleFacebook() : connectFacebook();
 	});
 	
-	twitter_switch.addEventListener('change', function(e) {
-		twitter ? toggleTwitter(e.value) : connectTwitter(e.value);
+	twitter_button.addEventListener('click', function() {
+		twitter ? toggleTwitter() : connectTwitter();
 	});
 		
-	function toggleFacebook(value) {
-		sharing.facebook = (value ? facebook.id : null);
+	function toggleFacebook() {
+		if(facebook_button.backgroundImage == 'images/sharestory/fb_not_sharing.png') {
+			sharing.facebook = facebook.id;
+			facebook_button.backgroundImage = 'images/sharestory/fb_sharing.png';
+		} else {
+			facebook_button.backgroundImage = 'images/sharestory/fb_not_sharing.png';
+			sharing.facebook = null;
+		}
 	}
 	
-	function toggleTwitter(value) {
-		sharing.twitter = (value ? twitter.id : null);
+	function toggleTwitter(state) {
+		if(twitter_button.backgroundImage == 'images/sharestory/tw_not_sharing.png') {
+			twitter_button.backgroundImage = "images/sharestory/tw_sharing.png";
+			sharing.twitter = twitter.id;
+		} else {
+			twitter_button.backgroundImage = 'images/sharestory/tw_not_sharing.png';
+			sharing.twitter = null;
+		}
 	}
 	
 	function getAuth(name, user) {
@@ -84,16 +110,14 @@ Views.sharings.init = function(capsule_id, delegate) {
 		return auth ? auth.authentication : null;
 	};
 	
-	function connectFacebook(value) {
-		if(!value) return;
+	function connectFacebook() {
 		Helpers.user.connectFacebook(function(user) {
 			facebook = getAuth('facebook', user);
 			toggleFacebook();
 		});
 	}
 	
-	function connectTwitter(value) {
-		if(!value) return;
+	function connectTwitter() {
 		Helpers.user.connectTwitter(function(user) {
 			twitter = getAuth('twitter', user);
 			toggleTwitter();

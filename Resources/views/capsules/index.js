@@ -1,4 +1,5 @@
 Views.capsules.index = function(delegate, win) {	
+	
 	var page = 1
 	, rows = []
 	, current_tab

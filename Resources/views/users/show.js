@@ -4,7 +4,7 @@ Views.users.show = function(delegate, user) {
 	var win = Ti.UI.createWindow({
 		title: "User",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var follow_button = Ti.UI.createButton({
