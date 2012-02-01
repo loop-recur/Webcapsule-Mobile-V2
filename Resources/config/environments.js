@@ -1,6 +1,6 @@
 Environments = {
 	development: function(){
-		App.setHost("http://localhost:3000/api");
+		App.setHost("http://webcapsule.com/api");
 	},
 	
 	production: function() {
