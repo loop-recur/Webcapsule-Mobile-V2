@@ -37,13 +37,6 @@ Views.sharings.init = function(capsule_id, delegate) {
 	share_button.addEventListener('click', function() {
 		delegate.create(finish, sharing);
 	});
-
-	// var facebook_button = Ti.UI.createButton({
-	// 	backgroundImage:"images/sharestory/fb_not_sharing.png",
-	// 	height:41,
-	// 	width:43,
-	// 	top: 50
-	// });
 	
 	var facebook_switch = Ti.UI.createSwitch({
 		value:false,
@@ -57,12 +50,6 @@ Views.sharings.init = function(capsule_id, delegate) {
 		right: 90
 	});
 	
-	// var twitter_button = Ti.UI.createButton({
-	// 	backgroundImage:"images/sharestory/tw_not_sharing.png",
-	// 	height:41,
-	// 	width:43,
-	// 	top: 100
-	// });
 
 	cancel_button.addEventListener('click', finish);
 	
@@ -72,36 +59,21 @@ Views.sharings.init = function(capsule_id, delegate) {
 	win.add(cancel_button);
 	
 	win.open();
-
-	if(facebook) toggleFacebook();
-	if(twitter) toggleTwitter();
 	
-	facebook_button.addEventListener('click', function() {
-		facebook ? toggleFacebook() : connectFacebook();
+	facebook_switch.addEventListener('change', function(e) {
+		facebook ? toggleFacebook(e.value) : connectFacebook(e.value);
 	});
 	
-	twitter_button.addEventListener('click', function() {
-		twitter ? toggleTwitter() : connectTwitter();
+	twitter_switch.addEventListener('change', function(e) {
+		twitter ? toggleTwitter(e.value) : connectTwitter(e.value);
 	});
 		
-	function toggleFacebook() {
-		if(facebook_button.backgroundImage == 'images/sharestory/fb_not_sharing.png') {
-			sharing.facebook = facebook.id;
-			facebook_button.backgroundImage = 'images/sharestory/fb_sharing.png';
-		} else {
-			facebook_button.backgroundImage = 'images/sharestory/fb_not_sharing.png';
-			sharing.facebook = null;
-		}
+	function toggleFacebook(value) {
+		sharing.facebook = (value ? facebook.id : null);
 	}
 	
-	function toggleTwitter(state) {
-		if(twitter_button.backgroundImage == 'images/sharestory/tw_not_sharing.png') {
-			twitter_button.backgroundImage = "images/sharestory/tw_sharing.png";
-			sharing.twitter = twitter.id;
-		} else {
-			twitter_button.backgroundImage = 'images/sharestory/tw_not_sharing.png';
-			sharing.twitter = null;
-		}
+	function toggleTwitter(value) {
+		sharing.twitter = (value ? twitter.id : null);
 	}
 	
 	function getAuth(name, user) {
@@ -110,14 +82,16 @@ Views.sharings.init = function(capsule_id, delegate) {
 		return auth ? auth.authentication : null;
 	};
 	
-	function connectFacebook() {
+	function connectFacebook(value) {
+		if(!value) return;
 		Helpers.user.connectFacebook(function(user) {
 			facebook = getAuth('facebook', user);
 			toggleFacebook();
 		});
 	}
 	
-	function connectTwitter() {
+	function connectTwitter(value) {
+		if(!value) return;
 		Helpers.user.connectTwitter(function(user) {
 			twitter = getAuth('twitter', user);
 			toggleTwitter();
