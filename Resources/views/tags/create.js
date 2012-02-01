@@ -6,7 +6,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 		title: "Add Tags",
 		backgroundImage:"images/backgrounds/webcap_snippet_feed_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var activity = Ti.UI.createActivityIndicator({

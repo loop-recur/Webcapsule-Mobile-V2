@@ -6,7 +6,7 @@ Views.capsules.create = function(delegate) {
 		title: "Create Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 	
 	var view = Ti.UI.createView({
@@ -238,7 +238,7 @@ Views.capsules.create = function(delegate) {
 	
 	
 	var finish = function(capsule) {
-		Controllers.capsules.show(capsule.id);
+		Controllers.capsules.show(capsule.id, true);
 	}
 	
 	var setSealDate = function() {
@@ -275,7 +275,7 @@ Views.capsules.create = function(delegate) {
 	}
 	
 	Geolocator.getCurrentCoordinates(setMap);
-
+	
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
 		var access = access_switch.value ? "private" : "public";

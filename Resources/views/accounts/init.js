@@ -2,18 +2,22 @@ Views.accounts.init = function(delegate) {
 	var win = Ti.UI.createWindow({
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 
 	var full_name = Ti.UI.createTextField({  
-	    paddingLeft:5,
-			top:30,   
-	    width:290,  
-	    height:35,  
-	    hintText:'Full Name',  
-	    keyboardType:Ti.UI.KEYBOARD_DEFAULT,  
-	    returnKeyType:Ti.UI.RETURNKEY_NEXT,  
-	    borderRadius:4
+			backgroundImage:"images/login/webcap_login_input_box.png",
+			backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",  
+			paddingLeft:15,
+			paddingBottom:5,
+			borderRadius:4,
+	    width:260,  
+	    height:56, 
+	    hintText:'Full Name', 
+			font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'}, 
+	    keyboardType:Ti.UI.KEYBOARD_EMAIL,  
+	    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+			top:30
 	});  
 
 	full_name.addEventListener('return', function() {
@@ -21,14 +25,18 @@ Views.accounts.init = function(delegate) {
 	});
 
 	var email = Ti.UI.createTextField({ 
-	    paddingLeft:5,
-			top:80,   
-	    width:290,  
-	    height:35,  
-	    hintText:'Email',  
+	    backgroundImage:"images/login/webcap_login_input_box.png",
+			backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",  
+			paddingLeft:15,
+			paddingBottom:5,
+			borderRadius:4,
+	    width:260,  
+	    height:56, 
+	    hintText:'Email', 
+			font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'}, 
 	    keyboardType:Ti.UI.KEYBOARD_EMAIL,  
-	    returnKeyType:Ti.UI.RETURNKEY_NEXT,  
-	    borderRadius:4
+	    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+			top:87
 	});
 	
 	email.addEventListener('return', function() {
@@ -36,15 +44,19 @@ Views.accounts.init = function(delegate) {
 	});
 
 	var password = Ti.UI.createTextField({
-	    top:130,
-			paddingLeft:5, 
-	    width:290,  
-	    height:35,  
-	    hintText:'Password',  
-	    passwordMask:true,  
-	    keyboardType:Ti.UI.KEYBOARD_DEFAULT,  
-	    returnKeyType:Ti.UI.RETURNKEY_NEXT,  
-	    borderRadius:4  
+	    backgroundImage:"images/login/webcap_login_input_box.png",
+			backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",  
+			paddingLeft:15,
+			paddingBottom:5,
+			borderRadius:4,
+	    width:260,  
+	    height:56, 
+	    hintText:'Password',
+			passwordMask:true, 
+			font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'}, 
+	    keyboardType:Ti.UI.KEYBOARD_EMAIL,  
+	    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+			top:144
 	});
 
 	password.addEventListener('return', function() {
@@ -52,33 +64,44 @@ Views.accounts.init = function(delegate) {
 	});
 
 	var password_confirm = Ti.UI.createTextField({  
-	    paddingLeft:5,
-			top:180,  
-	    width:290,  
-	    height:35,  
-	    hintText:'Confirm Password',  
-	    passwordMask:true,  
-	    keyboardType:Ti.UI.KEYBOARD_DEFAULT,  
-	    returnKeyType:Ti.UI.RETURNKEY_DONE,  
-	    borderRadius:4 
+	    backgroundImage:"images/login/webcap_login_input_box.png",
+			backgroundSelectedImage:"images/login/webcap_login_input_box_active.png",  
+			paddingLeft:15,
+			paddingBottom:5,
+			borderRadius:4,
+	    width:260,  
+	    height:56, 
+	    hintText:'Confirm Password', 
+			passwordMask:true,
+			font:{fontFamily:'GillSans',fontSize:"16dp",fontWeight:'regular'}, 
+	    keyboardType:Ti.UI.KEYBOARD_EMAIL,  
+	    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+			top:201 
 	});
 
-	var create_account_button = Ti.UI.createButton({  
-	    value:false,
-			title: "create",
-	    bottom:160,
-	  	right:10,
-	    width:133,
-	    height:49
+	// var create_account_button = Ti.UI.createButton({  
+	//     value:false,
+	// 		title: "create",
+	//     bottom:160,
+	//   	right:10,
+	//     width:133,
+	//     height:49
+	// });
+
+	var create_account_button = Ti.UI.createButton({
+		backgroundImage:"images/login/webcap_create_new_user_btn.png",
+		backgroundSelectedImage:"images/login/webcap_create_new_user_btn_active.png",
+		top:275,
+		height:55,
+		width:290
 	});
 
-	var cancel_button = Ti.UI.createButton({  
-	    value:false,
-			title: "cancel",
-	    bottom:160,
-	  	left:10,
-	    width:133,  
-	    height:49
+	var cancel_button = Ti.UI.createButton({
+		backgroundImage:"images/share/webcap_share_modal_cancel_btn.png",
+		width: 320,
+		height: 61,
+		bottom:60,
+		zIndex:30
 	});
 
 	cancel_button.addEventListener('click', function() {

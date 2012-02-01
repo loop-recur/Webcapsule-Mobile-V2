@@ -8,7 +8,7 @@ Views.websnippets.init = function(delegate, capsule_id) {
 		title: "Add Websnippets",
 		backgroundImage:"images/backgrounds/webcap_snippet_feed_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
-		//barColor:'black'
+		barColor:"black"
 	});
 
 	var activity = Ti.UI.createActivityIndicator({
