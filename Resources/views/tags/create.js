@@ -4,7 +4,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	
 	var win = Ti.UI.createWindow({
 		title: "Add Tags",
-		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+		backgroundImage:"images/backgrounds/webcap_snippet_feed_bg.png",
 		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT],
 		//barColor:'black'
 	});
@@ -25,7 +25,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 		top:0
 	});
 	
-	var createTableViewRow = function(tag) {		
+	var createTableViewRow = function(tag) {
 		var checkbox = Ti.UI.createImageView({
 			image: 'images/tags/on.png',
 			right: 10,
@@ -45,7 +45,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 			checkbox: checkbox
 		});
 		
-		var avatar = UI.createImageView({
+		var avatar = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(tag.image),
 			left: 10,
 			width: 40,
@@ -56,7 +56,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 		
 		var provider = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(tag.provider_icon),
-			right: 100,
+			right: 10,
 			width: 14,
 			height: 14,
 			tag: tag,
@@ -138,7 +138,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	win.add(activity);
 	win.setRightNavButton(done);
 	
-	delegate.getAll(finishLoadingTags);
+	delegate.getAll(finishLoadingTags, {}, {preload: true});
 	
 	return win;
 

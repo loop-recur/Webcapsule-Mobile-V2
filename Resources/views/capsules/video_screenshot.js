@@ -5,8 +5,8 @@ Views.capsules.video_screenshot = function(capsule) {
 
 	var screenshot = Ti.UI.createImageView({
 		image: Helpers.Application.assetPath(first(capsule.videos).screenshot),
-		height:70,
-		width:80
+		height:100,
+		width:110
 	});
 
 	view.add(screenshot);

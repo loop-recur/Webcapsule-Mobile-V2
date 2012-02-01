@@ -1,21 +1,18 @@
 Views.capsules.eight_photos = function(capsule) {
-	var view = Ti.UI.createScrollView({
+	var view = Ti.UI.createView({
+		top:0,
 		backgroundColor: "transparent",
-		width:290,
-		contentWidth:"auto",
-		contentHeight:70,
-		showHorizontalScrollIndicator:true,
-		showVerticalScrollIndicator:false,
+		width:'auto'
 	});
 	
 	function addImage(old_left, photo) {
-		var left_padding = old_left+90;
+		var left_padding = old_left+115;
 		
 		var image = Ti.UI.createImageView({
 			image: Helpers.Application.assetPath(photo.url),
 			left:old_left+10,
-			height:70,
-			width:80
+			height:100,
+			width:110
 		});
 
 		view.add(image);

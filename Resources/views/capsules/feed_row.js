@@ -1,6 +1,7 @@
 Views.capsules.feedRow = function(capsule) {
 	var page_text_color = "#B1B2B4";
-
+	var is_capsule = capsule.activity.kind == "Capsules";
+	
 	var row = Ti.UI.createTableViewRow({
 		backgroundImage:"images/backgrounds/webcap_feed_bg_with_photoindent.png",
 		height:279,
@@ -9,12 +10,17 @@ Views.capsules.feedRow = function(capsule) {
 		className:'capsule',
 		selectionStyle:Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
 	});
+	
+	if(is_capsule) {
+		row.backgroundImage = "images/backgrounds/webcap_feed_bg.png";
+		row.height = 185;
+	}
 
 	var avatar = UI.createAvatar({
 		image: Helpers.Application.assetPath(capsule.activity.user.image), 
 		left:20,
 		top:9,
-		height:59,
+		height:54,
 		width:59,
 		user: capsule.activity.user
 	});
@@ -47,7 +53,7 @@ Views.capsules.feedRow = function(capsule) {
 	row.add(added_new);
 
 	var added_icon = Ti.UI.createView({
-		backgroundImage:"images/feed/webcap_feedicons_photo.png",
+		backgroundImage:"images/feed/webcap_feedicons_"+capsule.activity.kind.toLowerCase()+".png",
 		width:31,
 		height:23,
 		left:88,
@@ -56,9 +62,11 @@ Views.capsules.feedRow = function(capsule) {
 	});
 
 	row.add(added_icon);
+	
+	var prefix = is_capsule ? "called ": "to ";
 
 	var name = Ti.UI.createLabel({
-		text:"to " + capsule.name, 
+		text:prefix + capsule.name, 
 		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:22,
@@ -217,12 +225,13 @@ Views.capsules.feedRow = function(capsule) {
 		showHorizontalScrollIndicator:true,
 		showVerticalScrollIndicator:false
 	})
-
-	var activity_content_view = Views.capsules[capsule.content_partial](capsule);
-	activity_content_view.height = 70;
-
-	scroll_activity_view.add(activity_content_view);
-	row.add(scroll_activity_view);
+	
+	if(!is_capsule) {
+		var activity_content_view = Views.capsules[capsule.content_partial](capsule);
+		// activity_content_view.height = 'a';
+		scroll_activity_view.add(activity_content_view);
+		row.add(scroll_activity_view);
+	}
 
 	var go_to_capsule = Ti.UI.createButton({
 		backgroundImage:"images/feed/webcap_feed_go_to_capsule_btn.png",

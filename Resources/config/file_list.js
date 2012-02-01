@@ -34,7 +34,6 @@ FileList = [
 	, "views/capsules/eight_photos.js"
 	, "views/capsules/four_photos.js"
 	, "views/capsules/two_photos.js"
-	, "views/capsules/new_capsule.js"
 	, "views/capsules/two_comments.js"
 	, "views/capsules/video_screenshot.js"
 	, "views/comments/create.js"

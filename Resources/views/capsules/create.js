@@ -199,6 +199,21 @@ Views.capsules.create = function(delegate) {
 	
 	// view.add(where);
 	
+	var mapview = Ti.Map.createView({
+		mapType: Ti.Map.STANDARD_TYPE,
+		height:64,
+		width:67,
+		top:76,
+		left:235,
+		borderRadius:8,
+		regionFit:true,
+		animate:true,
+		pincolor:Titanium.Map.ANNOTATION_RED,
+		userLocation:false
+	});
+	
+	win.add(mapview);
+	
 	
 	var save_button = Ti.UI.createButton({  
 		backgroundImage:"images/capsule/webcap_indented_plus_sign.png",
@@ -254,23 +269,6 @@ Views.capsules.create = function(delegate) {
 	} else {
 		where.hintText = "No geolocation enabled, please type in address";
 	}
-
-<<<<<<< HEAD
-	
-	var mapview = Ti.Map.createView({
-		mapType: Ti.Map.STANDARD_TYPE,
-		height:64,
-		width:67,
-		top:76,
-		left:235,
-		borderRadius:8,
-		regionFit:true,
-		animate:true,
-		pincolor:Titanium.Map.ANNOTATION_RED,
-		userLocation:false
-	});
-	
-	win.add(mapview);
 	
 	var setMap = function(coords) {
 		mapview.setLocation(merge(coords, {animate:true,latitudeDelta:0.04, longitudeDelta:0.04}));
@@ -278,8 +276,6 @@ Views.capsules.create = function(delegate) {
 	
 	Geolocator.getCurrentCoordinates(setMap);
 
-=======
->>>>>>> 509a31e8e08b00a7376e2b482034364a59541bab
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
 		var access = access_switch.value ? "private" : "public";

@@ -1,5 +1,6 @@
 Views.capsules.top_bar = function(capsule, delegate) {
 	var page_text_color = "#B1B2B4";
+	var is_creator = App.getCurrentUser().id == capsule.user_id;
 	
 	var info_view = Ti.UI.createView({
 		backgroundImage:"images/backgrounds/webcap_capsule_info_overlay.png",
@@ -8,7 +9,7 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	});
 	
 	var avatar = UI.createAvatar({
-		image: Helpers.Application.assetPath(capsule.user.image), 
+		image: Helpers.Application.assetPath(capsule.user.image),
 		left:12,
 		top:12,
 		height:59,
@@ -18,7 +19,7 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	
 	info_view.add(avatar);
 	
-	if(App.getCurrentUser().id == capsule.user_id) {
+	if(is_creator) {
 		var name_field = Ti.UI.createTextField({
 			value:capsule.name, 
 			font:{fontFamily:'GillSans',fontSize:"18dp",fontWeight:'regular'},
@@ -221,7 +222,7 @@ Views.capsules.top_bar = function(capsule, delegate) {
 	var slide_down =  Ti.UI.createAnimation({height:250});
 	var slide_up =  Ti.UI.createAnimation({height:80});
 	
-	tagged.addEventListener('click', Controllers.tags.create.p(capsule, tagged));
+	if(is_creator) tagged.addEventListener('click', Controllers.tags.create.p(capsule, tagged));
 	
 	share.addEventListener('click', Controllers.sharings.init.p(capsule.id));
 	
