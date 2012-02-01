@@ -27,7 +27,7 @@ Views.capsules.index = function(delegate, win) {
 		},
 		top:30,
 		height:20,
-		width:190,
+		width:"auto",
 		text:"Load More",
 		id: "more"
 	});

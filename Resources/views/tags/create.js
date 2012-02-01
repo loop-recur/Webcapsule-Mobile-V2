@@ -18,7 +18,7 @@ Views.tags.create = function(delegate, capsule, tagged) {
 	activity.show();
 	
 	var search = Ti.UI.createSearchBar({
-		//barColor:'black',
+		barColor:'black',
 		showCancel:true,
 		hintText:'Enter a twitter, facebook or username...',
 		height:40,

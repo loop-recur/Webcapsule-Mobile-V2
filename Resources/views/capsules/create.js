@@ -151,14 +151,14 @@ Views.capsules.create = function(delegate) {
 		paddingLeft:5,
 		borderRadius:1,
 		borderColor:"black",
-    width:220,  
-    height:25,
+	    width:220,  
+	    height:25,
 		hintText:"Type location...",
-    returnKeyType:Ti.UI.RETURNKEY_NEXT,
+	    returnKeyType:Ti.UI.RETURNKEY_NEXT,
 		bottom:40
 	});
 	
-	view.add(where);
+	// view.add(where);
 	
 	
 	var save_button = Ti.UI.createButton({  
@@ -196,6 +196,26 @@ Views.capsules.create = function(delegate) {
 	}
 
 	
+	var mapview = Ti.Map.createView({
+		mapType: Ti.Map.STANDARD_TYPE,
+		height:64,
+		width:67,
+		top:76,
+		left:235,
+		borderRadius:8,
+		regionFit:true,
+		animate:true,
+		pincolor:Titanium.Map.ANNOTATION_RED,
+		userLocation:false
+	});
+	
+	win.add(mapview);
+	
+	var setMap = function(coords) {
+		mapview.setLocation(merge(coords, {animate:true,latitudeDelta:0.04, longitudeDelta:0.04}));
+	}
+	
+	Geolocator.getCurrentCoordinates(setMap);
 
 	save_button.addEventListener('click', function() {
 		if(!name.value) name.value = "Untitled Capsule";
