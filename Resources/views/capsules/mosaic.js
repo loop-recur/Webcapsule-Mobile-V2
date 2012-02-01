@@ -20,7 +20,9 @@ Views.capsules.mosaic = function(capsule, delegate) {
 		var websnippet_view = Ti.UI.createView({
 			backgroundImage:"images/usershow/webcap_comment_thumbnail.png",
 			height:110,
-			width:110
+			width:110,
+			index: contents.indexOf(websnippet),
+			capsule: capsule
 		});
 		
 		var body = Ti.UI.createLabel({
@@ -29,7 +31,9 @@ Views.capsules.mosaic = function(capsule, delegate) {
 			color:"#444444",
 			top:10,
 			height:56,
-			width:76
+			width:76,
+			index: contents.indexOf(websnippet),
+			capsule: capsule
 		});
 	
 		var avatar = UI.createAvatar({
@@ -59,7 +63,9 @@ Views.capsules.mosaic = function(capsule, delegate) {
 			color:"#444444",
 			top:10,
 			height:56,
-			width:76
+			width:76,
+			index: contents.indexOf(comment),
+			capsule: capsule
 		});
 	
 		var avatar = UI.createAvatar({
@@ -87,7 +93,7 @@ Views.capsules.mosaic = function(capsule, delegate) {
 	
 	var makePhoto = function(photo) {
 		return image_view = Ti.UI.createImageView({
-			image:Helpers.Application.assetPath(photo.thumb)
+			image:Helpers.Application.assetPath(photo.square)
 		});
 	}
 	

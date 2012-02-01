@@ -16,6 +16,7 @@ Views.capsules.feedRow = function(capsule) {
 		row.height = 185;
 	}
 
+	log(Helpers.Application.assetPath(capsule.activity.user.image));
 	var avatar = UI.createAvatar({
 		image: Helpers.Application.assetPath(capsule.activity.user.image), 
 		left:20,
@@ -228,7 +229,6 @@ Views.capsules.feedRow = function(capsule) {
 	
 	if(!is_capsule) {
 		var activity_content_view = Views.capsules[capsule.content_partial](capsule);
-		// activity_content_view.height = 'a';
 		scroll_activity_view.add(activity_content_view);
 		row.add(scroll_activity_view);
 	}

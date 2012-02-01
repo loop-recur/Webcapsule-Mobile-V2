@@ -25,7 +25,7 @@ Controllers.capsules = (function() {
 	self.feed_options = ["Friends", "Mine", "Everybody", "Tagged"];
 	
 	self.mosaicClicked = function(e) {
-		if(!e.source.index) return;
+		if(e.source.index == (null || undefined)) return;
 		Nav.open(Gallery(self.getContents(e.source.capsule), e.source.index));
 	}
 	
