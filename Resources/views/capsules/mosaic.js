@@ -93,7 +93,7 @@ Views.capsules.mosaic = function(capsule, delegate) {
 	
 	var makePhoto = function(photo) {
 		return image_view = Ti.UI.createImageView({
-			image:Helpers.Application.assetPath(photo.full)
+			image:Helpers.Application.assetPath(photo.square)
 		});
 	}
 	

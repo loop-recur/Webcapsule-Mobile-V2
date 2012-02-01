@@ -15,5 +15,6 @@ Helpers.Application.extractInteger = function(str) {
 Helpers.Application.assetPath = function(path) {
 	if(!path) return;
 	if(path.match(/^http/)){ return path; };
+	path = path.replace(/\s+/g, "%20");
 	return App.base_url.replace("/api", "")+path;
 }
