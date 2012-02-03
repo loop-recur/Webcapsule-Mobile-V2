@@ -20,7 +20,8 @@ UI.feedButton = function(win, reset) {
 			var feed_win = Ti.UI.createWindow({
 				title: "Feed",
 				backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-				navBarHidden:false
+				navBarHidden:false,
+				barColor:"black"
 			});
 			Nav.open(Controllers.capsules.index(feed_win));
 		} else {
