@@ -1,4 +1,4 @@
-Views.capsules.show = function(delegate, id) {
+Views.capsules.show = function(delegate, id, reset) {
 	var win = Ti.UI.createWindow({
 		title: "Capsule",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
@@ -26,7 +26,7 @@ Views.capsules.show = function(delegate, id) {
 		win.setRightNavButton(add_to_capsule);
 	}
 	
-	UI.feedButton(win);
+	UI.feedButton(win, reset);
 	
 	delegate.getSingle(finish, {id: id}, {preload: true});
 

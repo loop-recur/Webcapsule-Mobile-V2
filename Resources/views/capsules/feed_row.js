@@ -16,7 +16,6 @@ Views.capsules.feedRow = function(capsule) {
 		row.height = 185;
 	}
 
-	log(Helpers.Application.assetPath(capsule.activity.user.image));
 	var avatar = UI.createAvatar({
 		image: Helpers.Application.assetPath(capsule.activity.user.image), 
 		left:20,

@@ -8,7 +8,7 @@ UI.createAvatar = function(attrs) {
 	return image;
 }
 
-UI.feedButton = function(win) {
+UI.feedButton = function(win, reset) {
 	var feed = Ti.UI.createButton({
 		title: "Feed",
 		width: 'auto',
@@ -16,7 +16,16 @@ UI.feedButton = function(win) {
 	});
 
 	feed.addEventListener('click', function(e) {
-		Nav.close(win);
+		if(reset) {
+			var feed_win = Ti.UI.createWindow({
+				title: "Feed",
+				backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
+				navBarHidden:false
+			});
+			Nav.open(Controllers.capsules.index(feed_win));
+		} else {
+			Nav.close(win);
+		}
 	});
 	
 	win.setLeftNavButton(feed);

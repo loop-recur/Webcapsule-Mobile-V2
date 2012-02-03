@@ -11,8 +11,8 @@ Controllers.capsules = (function() {
 	};
 	
 	var show = function(id, reset) {
-		var win = Views.capsules.show(self, id);
-		reset ? Main.resetNav(win) : Nav.open(win);
+		var win = Views.capsules.show(self, id, reset);
+		Nav.open(win);
 	};
 
 	var update = function(capsule) {
