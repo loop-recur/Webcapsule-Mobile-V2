@@ -32,7 +32,7 @@ Views.sharings.init = function(capsule_id, delegate) {
 	});
 	
 	var finish = function() {
-		win.close();
+		model.close();
 	}
 
 	share_button.addEventListener('click', function() {
