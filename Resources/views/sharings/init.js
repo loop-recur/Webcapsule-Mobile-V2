@@ -1,12 +1,13 @@
 Views.sharings.init = function(capsule_id, delegate) {
 	var sharing = {message: "Check out this capsule!", capsule_id: capsule_id};
 	
-	var win = Ti.UI.createWindow({
+	var model = Ti.UI.createWindow({
+		backgroundColor:"black"
+	});
+	
+	var win = Ti.UI.createView({
 		width: 320,
 		height: 376,
-		modal: true,
-		modalTransitionStyle:Ti.UI.iPhone.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE,
-		modalStyle:Ti.UI.iPhone.MODAL_PRESENTATION_CURRENT_CONTEXT,
 		navBarHidden:true,
 		backgroundImage:"images/share/webcap_share_modal_with_icons.png",
 		barColor:"black"
@@ -58,7 +59,8 @@ Views.sharings.init = function(capsule_id, delegate) {
 	win.add(twitter_switch);
 	win.add(cancel_button);
 	
-	win.open();
+	model.add(win);
+	model.open();
 	
 	facebook_switch.addEventListener('change', function(e) {
 		facebook ? toggleFacebook(e.value) : connectFacebook(e.value);

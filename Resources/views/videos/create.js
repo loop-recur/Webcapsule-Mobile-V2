@@ -24,26 +24,20 @@ Views.videos.create = function(delegate, capsule) {
 	});
 	
 	var finish = function() {
-		Ti.API.info("\n\n\n========finshing!!!!=======\n\n\n");
 		// alert("Video added!");
 		Controllers.capsules.show(capsule.id, true);
 	}
 	
 	var save = function(e) {
-		Ti.API.info("\n\n\n========sAVE!!!!!=======\n\n\n");
 		var video = {upload : e.media, capsule_id: capsule.id};
-		Ti.API.info("\n\n\n========ADD PBAR=======\n\n\n");
 		win.add(progress_bar);
 		progress_bar.show();
-		Ti.API.info("\n\n\n========ADD PBAR done=======\n\n\n");
 		delegate.addVideo(finish, video, progress_bar);
-		Ti.API.info("\n\n\n========delegate done=======\n\n\n");
 	}
 
 	var edit = defn(function(saveIt, e) {
 		if(saveIt) Ti.Media.saveToPhotoGallery(e.media);
 		
-		Ti.API.info("\n\n\n========start editing=======\n\n\n");
 		setTimeout(function() {
 			Ti.Media.startVideoEditing({
 				media: e.media,
