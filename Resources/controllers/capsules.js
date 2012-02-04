@@ -11,8 +11,11 @@ Controllers.capsules = (function() {
 	};
 	
 	var show = function(id, reset) {
+		Ti.API.info("\n\n\n========make win=======\n\n\n");
 		var win = Views.capsules.show(self, id);
+		Ti.API.info("\n\n\n========win made=======\n\n\n");
 		reset ? Main.resetNav(win) : Nav.open(win);
+		Ti.API.info("\n\n\n========opend=======\n\n\n");
 	};
 
 	var update = function(capsule) {
