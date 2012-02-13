@@ -2,7 +2,7 @@ Main = null;
 Nav = null;
 
 Layouts.application = function(delegate) {
-	Main = Ti.UI.createWindow();
+	Main = Ti.UI.createWindow({orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]});
 	
 	var win = Ti.UI.createWindow({
 		title: "Feed",

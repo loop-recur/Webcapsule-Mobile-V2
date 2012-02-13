@@ -1,5 +1,4 @@
-Views.capsules.index = function(delegate, win) {	
-	
+Views.capsules.index = function(delegate, win) {		
 	var page = 1
 	, rows = []
 	, current_tab
@@ -62,6 +61,7 @@ Views.capsules.index = function(delegate, win) {
 	subtabs.delegate = {
 		getContent : function(view, e) {
 			if(current_tab == e.source.id) return;
+			table.setData([]);
 			current_tab = e.source.id;
 			loadDataForTable();
 		}

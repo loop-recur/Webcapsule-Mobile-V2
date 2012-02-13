@@ -2,7 +2,8 @@ Views.sharings.init = function(capsule_id, delegate) {
 	var sharing = {message: "Check out this capsule!", capsule_id: capsule_id};
 	
 	var model = Ti.UI.createWindow({
-		backgroundColor:"black"
+		backgroundColor:"black",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var win = Ti.UI.createView({
@@ -88,7 +89,7 @@ Views.sharings.init = function(capsule_id, delegate) {
 		if(!value) return;
 		Helpers.user.connectFacebook(function(user) {
 			facebook = getAuth('facebook', user);
-			toggleFacebook();
+			toggleFacebook(true);
 		});
 	}
 	
@@ -96,7 +97,7 @@ Views.sharings.init = function(capsule_id, delegate) {
 		if(!value) return;
 		Helpers.user.connectTwitter(function(user) {
 			twitter = getAuth('twitter', user);
-			toggleTwitter();
+			toggleTwitter(true);
 		});
 	}
 	

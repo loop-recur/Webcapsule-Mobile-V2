@@ -1,10 +1,17 @@
 Views.users.show = function(delegate, user) {
 	var page_text_color = "#B1B2B4";
 	
+	var page = 1
+	, rows = []
+	, can_load_more = true;
+	
+	
+	
 	var win = Ti.UI.createWindow({
 		title: "User",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		barColor:"black"
+		barColor:"black",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var follow_button = Ti.UI.createButton({
@@ -141,15 +148,41 @@ Views.users.show = function(delegate, user) {
 	
 	if(App.getCurrentUser().id != user.id) info_view.add(follow_button);
 	
-	var tableView = Ti.UI.createTableView({
+	var table = Ti.UI.createTableView({
 		backgroundColor:"transparent",
 		top:120,
 		bottom:0,
 		separatorColor:'transparent'
 	});
 	
+	var load_more_row = Ti.UI.createTableViewRow({
+		backgroundImage:'images/feed/item_bg.png',
+		height:80,
+		width:320,
+		id: "more"
+	});
+	
+	var load_label = Ti.UI.createLabel({
+		color:'#6b6b6b',
+		font:{
+			fontFamily:'Helvetica Neue',
+			fontSize:18,
+			fontWeight:'bold'
+		},
+		top:30,
+		height:20,
+		width:"auto",
+		text:"Load More",
+		id: "more"
+	});
+	
+	load_more_row.add(load_label);
+	
 	var refreshTable = function(data) {
-		tableView.setData(map(Views.capsules.feedRow, data));
+		rows = data;
+		var xs = map(Views.capsules.feedRow, rows);
+		if(can_load_more) xs = cons(xs, load_more_row);
+		table.setData(xs);
 	}
 	
 	var isFollowing = function() {
@@ -157,7 +190,6 @@ Views.users.show = function(delegate, user) {
 	}
 	
 	var updateButton = function() {		
-		// follow_button.title = isFollowing() ? "Unfollow" : "Follow";
 		follow_button.backgroundImage = isFollowing() ? "images/usershow/webcap_user_unfollow_btn.png" : "images/usershow/webcap_user_follow_btn.png";
 	}
 	
@@ -170,12 +202,25 @@ Views.users.show = function(delegate, user) {
 		updateButton();
 		follow_button.addEventListener('click', follow);
 	}
+	
+	var loadMore = function() {
+		page += 1;
+		delegate.getData(function(xs) {
+			can_load_more = (xs.length >= 10);
+			refreshTable(cons(rows, xs));
+		}, {id: user.id, page: page}, {preload: false});
+	}
+	
+	table.addEventListener('click', function(e) {
+		if(!e.source.id) return;
+		(e.rowData.id == "more") ? loadMore() : Controllers.capsules.show(e.source.id);
+	});
 
 	setupButton();
 	
-	delegate.getData(refreshTable, user.id);
+	delegate.getData(refreshTable, {id: user.id});
 		
-	win.add(tableView);
+	win.add(table);
 	info_view.add(stats_view);
 	win.add(info_view);
 	

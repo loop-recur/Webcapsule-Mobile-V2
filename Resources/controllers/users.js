@@ -8,9 +8,7 @@ Controllers.users = (function() {
 	
 // delegate methods
 	
-	self.getData = function(cb, user_id) {
-		Api.all(cb, {id: user_id});
-	};
+	self.getData = Api.all;
 
 	return {show : show}
 })();

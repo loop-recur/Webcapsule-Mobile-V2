@@ -2,7 +2,8 @@ Views.capsules.update = function(delegate, capsule) {
 	var view = Ti.UI.createWindow({
 		title: "Add Content",
 		backgroundImage:"images/backgrounds/webcap_main_linen_bg.png",
-		barColor:"black"
+		barColor:"black",
+		orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 	});
 	
 	var add_content_label = Ti.UI.createLabel({
