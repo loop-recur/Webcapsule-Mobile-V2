@@ -72,7 +72,9 @@ Views.sharings.init = function(capsule_id, delegate) {
 	});
 		
 	function toggleFacebook(value) {
+		Ti.API.info("\n\n\n========TOGGLING FACEBOOK=======\n\n\n");
 		sharing.facebook = (value ? facebook.id : null);
+		Ti.API.info("\n\n\n========sharing fb id is now "+sharing.facebook+"=======\n\n\n");
 	}
 	
 	function toggleTwitter(value) {

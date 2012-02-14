@@ -111,7 +111,7 @@ Views.users.show = function(delegate, user) {
 	
 	
 	var followers_count = Ti.UI.createLabel({
-		text:"followers: " + user.view_count,
+		text:"followers: " + user.follower_count,
 		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:18,
@@ -123,7 +123,7 @@ Views.users.show = function(delegate, user) {
 	stats_view.add(followers_count);
 	
 	var followees_count = Ti.UI.createLabel({
-		text:"following: " + user.capsule_count,
+		text:"following: " + user.followees_count,
 		font:{fontFamily:'GillSans',fontSize:"12dp",fontWeight:'regular'},
 		color:page_text_color,
 		left:18,
