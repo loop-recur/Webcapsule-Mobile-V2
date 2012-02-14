@@ -16,6 +16,7 @@ Views.sharings.init = function(capsule_id, delegate) {
 	
 	var twitter = getAuth('twitter');
 	var facebook = getAuth('facebook');
+	Ti.API.info("\n\n\n========I THINK YOUR FACEBOOK ID IS "+ facebook.id +"=======\n\n\n");
 		
 	var share_button = Ti.UI.createButton({
 		backgroundImage:"images/share/webcap_share_modal_share_btn.png",
